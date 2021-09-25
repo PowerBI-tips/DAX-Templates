@@ -4,9 +4,9 @@
             "build": "0.0.1"
         },
         "information": {
-            "name": "Simple Count Rows",
+            "name": "Filtered Table Rows Number",
             "definition": "==========",
-            "description": "This is a very simple example using Power BI Sidetools DAX generator",
+            "description": "This is a very simple example calculating rows number of a filtered table",
             "author": "didier terrien"
         }
     },
@@ -20,20 +20,34 @@
         },
         {
             "key":"__1__",
-            "name":"Parameter1",
+            "name":"Table Name",
             "description":"Table we want to count rows (click to modify)",
             "type":"string",
             "kind":"table"                
         },
         {
             "key":"__2__",
+            "name":"Column Name",
+            "description":"Column to be filtered. The column must belong to the table (click to modify)",
+            "type":"string",
+            "kind":"column"       
+        },
+        {
+            "key":"__3__",
+            "name":"Number or Text Value for Filter",
+            "description":"Value the column will be filtered on (click to modify)",
+            "type":"any",
+            "kind":"userInput"
+        },
+        {
+            "key":"__4__",
             "name":"Folder1",
             "description":"Name of folder that the measure will be placed in. (click to modify)",
             "type":"string",
             "kind":"metadata"       
         },
         {
-            "key":"__3__",
+            "key":"__5__",
             "name":"Description",
             "description":"Add a description for this measure. (click to modify)",
             "type":"string",
@@ -42,21 +56,23 @@
     ],
     "encoding":{
         "name":"__0__",
-        "expression": "= COUNTROWS( __1__ )",
+        "expression": "= COUNTROWS( FILTER( __1__ , __1__[__2__] = 'YourValue' ) )",
         "format":{
             "formatString":"#,##0",
             "Use Parenthesis for Negative Values": false,
             "Use Thousand Separator": true
         },
-        "folder":"__2__",
+        "folder":"__4__",
         "hidden":false,
-        "description":"__3__"
+        "description":"__5__"
     },
-    "instructions": [
-        "1. Chose a name for your measure clicking on 'Measure name'",
+    "instructions":[
+        "1. Choose a name for your measure clicking on 'Measure name'",
         "2. Click on 'Parameter 1' and select a table from your model",
-        "3. Click on 'Generate' button",
-        "4. Click on 'Create / update' button to create a measure in your model",
-        "5. Click on 'Debug' button to start a debug session with DAX debugger"
+        "3. Click on 'Parameter 2' and select a column from the table you selected",
+        "4. Click on 'Parameter 3' and select a value",
+        "5. Click on 'Generate' button",
+        "6. Click on 'Create / update' button to create a measure in your model",
+        "7. Click on 'Debug' button to start a debug session with DAX debugger"
     ]
 }

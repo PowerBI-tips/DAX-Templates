@@ -1,0 +1,474 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v2.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "usermeta": {
+                "daxTemplate": {
+                    "build": "0.0.1"
+                },
+                "information": {
+                    "name": "Filtered Table Rows Number",
+                    "definition": "==========",
+                    "description": "This is a very simple example calculating rows number of a filtered table",
+                    "author": "didier terrien"
+                }
+            },
+            "mappings": [
+                {
+                    "key": "__0__",
+                    "name": "YourQuickMeasure",
+                    "description": "Name of the measure DAX generator will create (click to modify)",
+                    "type": "string",
+                    "kind": "measure"
+                },
+                {
+                    "key": "__1__",
+                    "name": "Table Name",
+                    "description": "Table we want to count rows (click to modify)",
+                    "type": "string",
+                    "kind": "table"
+                },
+                {
+                    "key": "__2__",
+                    "name": "Column Name",
+                    "description": "Column to be filtered. The column must belong to the table (click to modify)",
+                    "type": "string",
+                    "kind": "column"
+                },
+                {
+                    "key": "__3__",
+                    "name": "Number or Text Value for Filter",
+                    "description": "Value the column will be filtered on (click to modify)",
+                    "type": "any",
+                    "kind": "userInput"
+                },
+                {
+                    "key": "__4__",
+                    "name": "Folder1",
+                    "description": "Name of folder that the measure will be placed in. (click to modify)",
+                    "type": "string",
+                    "kind": "metadata"
+                },
+                {
+                    "key": "__5__",
+                    "name": "Description",
+                    "description": "Add a description for this measure. (click to modify)",
+                    "type": "string",
+                    "kind": "metadata"
+                }
+            ],
+            "encoding": {
+                "dax": "__0__ = COUNTROWS( FILTER( __1__ , __1__[__2__] = 'YourValue' ) )",
+                "format": {
+                    "formatString": "#,##0",
+                    "Use Parenthesis for Negative Values": false,
+                    "Use Thousand Separator": true
+                },
+                "folder": "__4__",
+                "hidden": false,
+                "description": "__5__"
+            },
+            "instructions": [
+                "1. Choose a name for your measure clicking on 'Measure name'",
+                "2. Click on 'Parameter 1' and select a table from your model",
+                "3. Click on 'Parameter 2' and select a column from the table you selected",
+                "4. Click on 'Parameter 3' and select a value",
+                "5. Click on 'Generate' button",
+                "6. Click on 'Create / update' button to create a measure in your model",
+                "7. Click on 'Debug' button to start a debug session with DAX debugger"
+            ]
+        }
+    ],
+    "required": [
+        "usermeta",
+        "mappings",
+        "encoding",
+        "instructions"
+    ],
+    "properties": {
+        "usermeta": {
+            "$id": "#/properties/usermeta",
+            "type": "object",
+            "title": "The usermeta schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "daxTemplate": {
+                        "build": "0.0.1"
+                    },
+                    "information": {
+                        "name": "Filtered Table Rows Number",
+                        "definition": "==========",
+                        "description": "This is a very simple example calculating rows number of a filtered table",
+                        "author": "didier terrien"
+                    }
+                }
+            ],
+            "required": [
+                "daxTemplate",
+                "information"
+            ],
+            "properties": {
+                "daxTemplate": {
+                    "$id": "#/properties/usermeta/properties/daxTemplate",
+                    "type": "object",
+                    "title": "The daxTemplate schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "build": "0.0.1"
+                        }
+                    ],
+                    "required": [
+                        "build"
+                    ],
+                    "properties": {
+                        "build": {
+                            "$id": "#/properties/usermeta/properties/daxTemplate/properties/build",
+                            "type": "string",
+                            "title": "The build schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "0.0.1"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "information": {
+                    "$id": "#/properties/usermeta/properties/information",
+                    "type": "object",
+                    "title": "The information schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "name": "Filtered Table Rows Number",
+                            "definition": "==========",
+                            "description": "This is a very simple example calculating rows number of a filtered table",
+                            "author": "didier terrien"
+                        }
+                    ],
+                    "required": [
+                        "name",
+                        "definition",
+                        "description",
+                        "author"
+                    ],
+                    "properties": {
+                        "name": {
+                            "$id": "#/properties/usermeta/properties/information/properties/name",
+                            "type": "string",
+                            "title": "The name schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "Filtered Table Rows Number"
+                            ]
+                        },
+                        "definition": {
+                            "$id": "#/properties/usermeta/properties/information/properties/definition",
+                            "type": "string",
+                            "title": "The definition schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "=========="
+                            ]
+                        },
+                        "description": {
+                            "$id": "#/properties/usermeta/properties/information/properties/description",
+                            "type": "string",
+                            "title": "The description schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "This is a very simple example calculating rows number of a filtered table"
+                            ]
+                        },
+                        "author": {
+                            "$id": "#/properties/usermeta/properties/information/properties/author",
+                            "type": "string",
+                            "title": "The author schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "didier terrien"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                }
+            },
+            "additionalProperties": true
+        },
+        "mappings": {
+            "$id": "#/properties/mappings",
+            "type": "array",
+            "title": "The mappings schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "key": "__0__",
+                        "name": "YourQuickMeasure",
+                        "description": "Name of the measure DAX generator will create (click to modify)",
+                        "type": "string",
+                        "kind": "measure"
+                    },
+                    {
+                        "key": "__1__",
+                        "name": "Table Name",
+                        "description": "Table we want to count rows (click to modify)",
+                        "type": "string",
+                        "kind": "table"
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/mappings/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/mappings/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "key": "__0__",
+                                "name": "YourQuickMeasure",
+                                "description": "Name of the measure DAX generator will create (click to modify)",
+                                "type": "string",
+                                "kind": "measure"
+                            }
+                        ],
+                        "required": [
+                            "key",
+                            "name",
+                            "description",
+                            "type",
+                            "kind"
+                        ],
+                        "properties": {
+                            "key": {
+                                "$id": "#/properties/mappings/items/anyOf/0/properties/key",
+                                "type": "string",
+                                "title": "The key schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "__0__"
+                                ]
+                            },
+                            "name": {
+                                "$id": "#/properties/mappings/items/anyOf/0/properties/name",
+                                "type": "string",
+                                "title": "The name schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "YourQuickMeasure"
+                                ]
+                            },
+                            "description": {
+                                "$id": "#/properties/mappings/items/anyOf/0/properties/description",
+                                "type": "string",
+                                "title": "The description schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "Name of the measure DAX generator will create (click to modify)"
+                                ]
+                            },
+                            "type": {
+                                "$id": "#/properties/mappings/items/anyOf/0/properties/type",
+                                "type": "string",
+                                "title": "The type schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "string"
+                                ]
+                            },
+                            "kind": {
+                                "$id": "#/properties/mappings/items/anyOf/0/properties/kind",
+                                "type": "string",
+                                "title": "The kind schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": "",
+                                "examples": [
+                                    "measure"
+                                ]
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        },
+        "encoding": {
+            "$id": "#/properties/encoding",
+            "type": "object",
+            "title": "The encoding schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "dax": "__0__ = COUNTROWS( FILTER( __1__ , __1__[__2__] = 'YourValue' ) )",
+                    "format": {
+                        "formatString": "#,##0",
+                        "Use Parenthesis for Negative Values": false,
+                        "Use Thousand Separator": true
+                    },
+                    "folder": "__4__",
+                    "hidden": false,
+                    "description": "__5__"
+                }
+            ],
+            "required": [
+                "dax",
+                "format",
+                "folder",
+                "hidden",
+                "description"
+            ],
+            "properties": {
+                "dax": {
+                    "$id": "#/properties/encoding/properties/dax",
+                    "type": "string",
+                    "title": "The dax schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "__0__ = COUNTROWS( FILTER( __1__ , __1__[__2__] = 'YourValue' ) )"
+                    ]
+                },
+                "format": {
+                    "$id": "#/properties/encoding/properties/format",
+                    "type": "object",
+                    "title": "The format schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                        {
+                            "formatString": "#,##0",
+                            "Use Parenthesis for Negative Values": false,
+                            "Use Thousand Separator": true
+                        }
+                    ],
+                    "required": [
+                        "formatString",
+                        "Use Parenthesis for Negative Values",
+                        "Use Thousand Separator"
+                    ],
+                    "properties": {
+                        "formatString": {
+                            "$id": "#/properties/encoding/properties/format/properties/formatString",
+                            "type": "string",
+                            "title": "The formatString schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                                "#,##0"
+                            ]
+                        },
+                        "Use Parenthesis for Negative Values": {
+                            "$id": "#/properties/encoding/properties/format/properties/Use%20Parenthesis%20for%20Negative%20Values",
+                            "type": "boolean",
+                            "title": "The Use Parenthesis for Negative Values schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": false,
+                            "examples": [
+                                false
+                            ]
+                        },
+                        "Use Thousand Separator": {
+                            "$id": "#/properties/encoding/properties/format/properties/Use%20Thousand%20Separator",
+                            "type": "boolean",
+                            "title": "The Use Thousand Separator schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": false,
+                            "examples": [
+                                true
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                },
+                "folder": {
+                    "$id": "#/properties/encoding/properties/folder",
+                    "type": "string",
+                    "title": "The folder schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "__4__"
+                    ]
+                },
+                "hidden": {
+                    "$id": "#/properties/encoding/properties/hidden",
+                    "type": "boolean",
+                    "title": "The hidden schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        false
+                    ]
+                },
+                "description": {
+                    "$id": "#/properties/encoding/properties/description",
+                    "type": "string",
+                    "title": "The description schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "__5__"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        },
+        "instructions": {
+            "$id": "#/properties/instructions",
+            "type": "array",
+            "title": "The instructions schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    "1. Choose a name for your measure clicking on 'Measure name'",
+                    "2. Click on 'Parameter 1' and select a table from your model"
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/instructions/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/instructions/items/anyOf/0",
+                        "type": "string",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": [
+                            "1. Choose a name for your measure clicking on 'Measure name'",
+                            "2. Click on 'Parameter 1' and select a table from your model"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "additionalProperties": true
+}
