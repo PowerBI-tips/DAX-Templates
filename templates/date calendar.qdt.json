@@ -28,7 +28,7 @@
     ],
     "encoding":{
         "name":"__0__",
-        "expression": "GENERATE (\n    CALENDARAUTO(),\n    VAR currentDay = [Date]\n    VAR day = DAY( currentDay )\n    VAR month =  MONTH ( currentDay )\n    VAR year =  YEAR ( currentDay )\n    RETURN\n        ROW ( \n            \\\"day\\\", day,\n            \\\"month\\\", month,\n            \\\"year\\\", year \n        )\n)",
+        "expression": "GENERATE (\n    CALENDARAUTO(),\n    VAR currentDay = [Date]\n    VAR day = DAY( currentDay )\n    VAR month =  MONTH ( currentDay )\n    VAR year =  YEAR ( currentDay )\n    RETURN\n        ROW ( \n            \"day\", day,\n            \"month\", month,\n            \"year\", year \n        )\n)",
         "hidden":false,
         "description":"__1__"
     },
