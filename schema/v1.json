@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "http://example.com/example.json",
+    "$id": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.json",
     "type": "object",
     "title": "The root schema",
     "description": "The root schema comprises the entire JSON document.",
@@ -15,7 +15,7 @@
                     "name": "Simple Count Rows",
                     "definition": "==========",
                     "description": "This is a very simple example using Power BI Sidetools DAX generator",
-                    "author": "Didier Terrien"
+                    "author": "didier terrien"
                 }
             },
             "mappings": [
@@ -58,13 +58,17 @@
                 "folder": "__2__",
                 "hidden": false,
                 "description": "__3__"
+            },
+            "instructions": {
+                "text": "1. Chose a name for your measure clicking on 'Measure name' \\n 2. Click on 'Parameter 1' and select a table from your model \\n 3. Click on 'Generate' button \\n 4. Click on 'Create / update' button to create a measure in your model \\n 5. Click on 'Debug' button to start a debug session with DAX debugger"
             }
         }
     ],
     "required": [
         "usermeta",
         "mappings",
-        "encoding"
+        "encoding",
+        "instructions"
     ],
     "properties": {
         "usermeta": {
@@ -82,7 +86,7 @@
                         "name": "Simple Count Rows",
                         "definition": "==========",
                         "description": "This is a very simple example using Power BI Sidetools DAX generator",
-                        "author": "Didier Terrien"
+                        "author": "didier terrien"
                     }
                 }
             ],
@@ -130,12 +134,11 @@
                             "name": "Simple Count Rows",
                             "definition": "==========",
                             "description": "This is a very simple example using Power BI Sidetools DAX generator",
-                            "author": "Didier Terrien"
+                            "author": "didier terrien"
                         }
                     ],
                     "required": [
                         "name",
-                        "definition",
                         "description",
                         "author"
                     ],
@@ -177,7 +180,7 @@
                             "description": "An explanation about the purpose of this instance.",
                             "default": "",
                             "examples": [
-                                "Didier Terrien"
+                                "didier terrien"
                             ]
                         }
                     },
@@ -314,9 +317,6 @@
             ],
             "required": [
                 "dax",
-                "format",
-                "folder",
-                "hidden",
                 "description"
             ],
             "properties": {
@@ -374,7 +374,7 @@
                             "type": "boolean",
                             "title": "The Use Thousand Separator schema",
                             "description": "An explanation about the purpose of this instance.",
-                            "default": false,
+                            "default": true,
                             "examples": [
                                 true
                             ]
@@ -410,6 +410,34 @@
                     "default": "",
                     "examples": [
                         "__3__"
+                    ]
+                }
+            },
+            "additionalProperties": true
+        },
+        "instructions": {
+            "$id": "#/properties/instructions",
+            "type": "object",
+            "title": "The instructions schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "text": "1. Chose a name for your measure clicking on 'Measure name' \\n 2. Click on 'Parameter 1' and select a table from your model \\n 3. Click on 'Generate' button \\n 4. Click on 'Create / update' button to create a measure in your model \\n 5. Click on 'Debug' button to start a debug session with DAX debugger"
+                }
+            ],
+            "required": [
+                "text"
+            ],
+            "properties": {
+                "text": {
+                    "$id": "#/properties/instructions/properties/text",
+                    "type": "string",
+                    "title": "The text schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "1. Chose a name for your measure clicking on 'Measure name' \\n 2. Click on 'Parameter 1' and select a table from your model \\n 3. Click on 'Generate' button \\n 4. Click on 'Create / update' button to create a measure in your model \\n 5. Click on 'Debug' button to start a debug session with DAX debugger"
                     ]
                 }
             },
