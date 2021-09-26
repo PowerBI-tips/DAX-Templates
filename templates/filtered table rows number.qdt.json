@@ -7,7 +7,7 @@
             "name": "Filtered Table Rows Number",
             "definition": "==========",
             "description": "This is a very simple example calculating rows number of a filtered table",
-            "author": "didier terrien"
+            "author": ["didier terrien"]
         }
     },
     "mappings": [
@@ -56,7 +56,7 @@
     ],
     "encoding":{
         "name":"__0__",
-        "expression": "= COUNTROWS( FILTER( __1__ , __1__[__2__] = 'YourValue' ) )",
+        "expression": "= COUNTROWS( FILTER( __1__ , '__1__'[__2__] = __3__ ) )",
         "format":{
             "formatString":"#,##0",
             "Use Parenthesis for Negative Values": false,
@@ -67,12 +67,12 @@
         "description":"__5__"
     },
     "instructions":[
-        "1. Choose a name for your measure clicking on 'Measure name'",
-        "2. Click on 'Parameter 1' and select a table from your model",
-        "3. Click on 'Parameter 2' and select a column from the table you selected",
-        "4. Click on 'Parameter 3' and select a value",
-        "5. Click on 'Generate' button",
-        "6. Click on 'Create / update' button to create a measure in your model",
-        "7. Click on 'Debug' button to start a debug session with DAX debugger"
+        "Choose a name for your measure clicking on 'Measure name'",
+        "Click on 'Parameter 1' and select a table from your model",
+        "Click on 'Parameter 2' and select a column from the table you selected",
+        "Click on 'Parameter 3' and select a value",
+        "Click on 'Generate' button",
+        "Click on 'Create / update' button to create a measure in your model",
+        "Click on 'Debug' button to start a debug session with DAX debugger"
     ]
 }

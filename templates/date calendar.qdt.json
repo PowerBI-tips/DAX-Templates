@@ -7,7 +7,7 @@
             "name": "Date Calendar with Calendar Auto function",
             "definition": "==========",
             "description": "Uses the Calendar Auto DAX function to generate a data calendar.",
-            "author": "Mike Carlo"
+            "author": ["Mike Carlo"]
         }
     },
     "mappings": [
@@ -33,9 +33,9 @@
         "description":"__1__"
     },
     "instructions": [
-        "1. Chose a name for your measure clicking on 'Measure name'",
-        "2. Click on 'Generate' button",
-        "3. Click on 'Create / update' button to create a measure in your model",
-        "4. Click on 'Debug' button to start a debug session with DAX debugger"
+        "Chose a name for your measure clicking on 'Measure name'",
+        "Click on 'Generate' button",
+        "Click on 'Create / update' button to create a measure in your model",
+        "Click on 'Debug' button to start a debug session with DAX debugger"
     ]
 }
