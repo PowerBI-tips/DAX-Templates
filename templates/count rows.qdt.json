@@ -14,6 +14,7 @@
         {
             "key":"__0__",
             "name":"YourQuickMeasure",
+            "defaultValue":"",
             "description":"Name of the measure DAX generator will create (click to modify)",
             "type":"string",
             "kind":"measure"
@@ -53,10 +54,10 @@
         "description":"__3__"
     },
     "instructions": [
-        "Chose a name for your measure clicking on 'Measure name'",
-        "Click on 'Parameter 1' and select a table from your model",
-        "Click on 'Generate' button",
-        "Click on 'Create / update' button to create a measure in your model",
-        "Click on 'Debug' button to start a debug session with DAX debugger"
+        "1. Chose a name for your measure clicking on 'Measure name'",
+        "2. Click on 'Parameter 1' and select a table from your model",
+        "3. Click on 'Generate' button",
+        "4. Click on 'Create / update' button to create a measure in your model",
+        "5. Click on 'Debug' button to start a debug session with DAX debugger"
     ]
 }
