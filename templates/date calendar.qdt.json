@@ -1,37 +1,45 @@
 {
     "usermeta": {
         "daxTemplate": {
-            "build": "0.0.1"
+            "build": "0.0.1",
+            "schema": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.json"
         },
         "information": {
             "name": "Date Calendar with Calendar Auto function",
             "definition": "==========",
             "description": "Uses the Calendar Auto DAX function to generate a data calendar.",
-            "author": ["Mike Carlo"]
+            "author": [
+                "Mike Carlo"
+            ]
         }
     },
     "mappings": [
         {
-            "key":"__0__",
-            "name":"YourQuickMeasure",
-            "description":"Name of the measure DAX generator will create (click to modify)",
-            "type":"string",
-            "kind":"measure"
+            "key": "__0__",
+            "displayName": "Name of Date Table",
+            "defaultValue": "Calendar",
+            "description": "Create the name of the produced Date Table (click to modify)",
+            "type": ["string"],
+            "kind": "userInput"
         },
         {
-            "key":"__1__",
-            "name":"Description",
-            "description":"Add a description for this measure. (click to modify)",
-            "type":"string",
-            "kind":"metadata"                
+            "key": "__1__",
+            "displayName": "Description",
+            "defaultValue": "The Date table using the Calendar Auto dax function.",
+            "description": "Add a description for this measure. (click to modify)",
+            "type": ["string"],
+            "kind": "userInput"
         }
     ],
-    "encoding":{
-        "name":"__0__",
-        "expression": "GENERATE (\n    CALENDARAUTO(),\n    VAR currentDay = [Date]\n    VAR day = DAY( currentDay )\n    VAR month =  MONTH ( currentDay )\n    VAR year =  YEAR ( currentDay )\n    RETURN\n        ROW ( \n            \"day\", day,\n            \"month\", month,\n            \"year\", year \n        )\n)",
-        "hidden":false,
-        "description":"__1__"
-    },
+    "encoding": [
+        {
+            "type":"table",
+            "name": "__0__",
+            "expression": "GENERATE (\n    CALENDARAUTO(),\n    VAR currentDay = [Date]\n    VAR day = DAY( currentDay )\n    VAR month =  MONTH ( currentDay )\n    VAR year =  YEAR ( currentDay )\n    RETURN\n        ROW ( \n            \"day\", day,\n            \"month\", month,\n            \"year\", year \n        )\n)",
+            "hidden": false,
+            "description": "__1__"
+        }
+    ],
     "instructions": [
         "Chose a name for your measure clicking on 'Measure name'",
         "Click on 'Generate' button",

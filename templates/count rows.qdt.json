@@ -1,63 +1,72 @@
 {
     "usermeta": {
         "daxTemplate": {
-            "build": "0.0.1"
+            "build": "0.0.1",
+            "schema": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.json"
         },
         "information": {
             "name": "Simple Count Rows",
             "definition": "==========",
             "description": "This is a very simple example using Power BI Sidetools DAX generator",
-            "author": ["didier terrien"]
+            "author": [
+                "Didier Terrien"
+            ]
         }
     },
     "mappings": [
         {
-            "key":"__0__",
-            "name":"YourQuickMeasure",
-            "defaultValue":"",
-            "description":"Name of the measure DAX generator will create (click to modify)",
-            "type":"string",
-            "kind":"measure"
+            "key": "__0__",
+            "displayName": "Name of Measure",
+            "defaultValue": "Total Rows in Table",
+            "description": "Defines the name of generated measure DAX generator will create (click to modify)",
+            "type": ["string"],
+            "kind": "userInput"
         },
         {
-            "key":"__1__",
-            "name":"Parameter1",
-            "description":"Table we want to count rows (click to modify)",
-            "type":"string",
-            "kind":"table"                
+            "key": "__1__",
+            "displayName": "Table Name",
+            "defaultValue": "",
+            "description": "Select the table we wish to use the CountRows function on (click to modify)",
+            "type": ["string"],
+            "kind": "table"
         },
         {
-            "key":"__2__",
-            "name":"Folder1",
-            "description":"Name of folder that the measure will be placed in. (click to modify)",
-            "type":"string",
-            "kind":"metadata"       
+            "key": "__2__",
+            "displayName": "Folder1",
+            "defaultValue": "_Measures",
+            "description": "Name of folder that the measure will be placed in. (click to modify)",
+            "type": ["string"],
+            "kind": "userInput"
         },
         {
-            "key":"__3__",
-            "name":"Description",
-            "description":"Add a description for this measure. (click to modify)",
-            "type":"string",
-            "kind":"metadata"                
+            "key": "__3__",
+            "displayName": "Description",
+            "defaultValue": "Counts the number of rows in the table.",
+            "description": "Add a description for this measure. (click to modify)",
+            "type": ["string"],
+            "kind": "userInput"
         }
     ],
-    "encoding":{
-        "name":"__0__",
-        "expression": "= COUNTROWS( __1__ )",
-        "format":{
-            "formatString":"#,##0",
-            "Use Parenthesis for Negative Values": false,
-            "Use Thousand Separator": true
-        },
-        "folder":"__2__",
-        "hidden":false,
-        "description":"__3__"
-    },
+    "encoding": [
+        {
+            "type":"measure",
+            "name": "__0__",
+            "expression": "= COUNTROWS( __1__ )",
+            "format": {
+                "formatString": "#,##0",
+                "Use Parenthesis for Negative Values": false,
+                "Use Thousand Separator": true
+            },
+            "folder": "__2__",
+            "hidden": false,
+            "description": "__3__"
+        }
+    ],
     "instructions": [
-        "1. Chose a name for your measure clicking on 'Measure name'",
-        "2. Click on 'Parameter 1' and select a table from your model",
-        "3. Click on 'Generate' button",
-        "4. Click on 'Create / update' button to create a measure in your model",
-        "5. Click on 'Debug' button to start a debug session with DAX debugger"
+        "Choose a name for your measure clicking on 'Measure name'",
+        "Click on 'Parameter 1' and select a table from your model",
+        "Click on 'Generate' button",
+        "Click on 'Create / update' button to create a measure in your model",
+        "Click on 'Debug' button to start a debug session with DAX debugger"
     ]
 }

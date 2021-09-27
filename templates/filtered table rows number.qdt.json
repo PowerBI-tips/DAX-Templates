@@ -1,72 +1,83 @@
 {
     "usermeta": {
         "daxTemplate": {
-            "build": "0.0.1"
+            "build": "0.0.1",
+            "schema": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.json"
         },
         "information": {
             "name": "Filtered Table Rows Number",
             "definition": "==========",
             "description": "This is a very simple example calculating rows number of a filtered table",
-            "author": ["didier terrien"]
+            "author": [
+                "Didier Terrien"
+            ]
         }
     },
     "mappings": [
         {
-            "key":"__0__",
-            "name":"YourQuickMeasure",
-            "description":"Name of the measure DAX generator will create (click to modify)",
-            "type":"string",
-            "kind":"measure"
+            "key": "__0__",
+            "displayName": "Name of Measure",
+            "defaultValue": "Filtered Measure",
+            "description": "Name of the measure DAX generator will create (click to modify)",
+            "type": ["string"],
+            "kind": "userInput"
         },
         {
-            "key":"__1__",
-            "name":"Table Name",
-            "description":"Table we want to count rows (click to modify)",
-            "type":"string",
-            "kind":"table"                
+            "key": "__1__",
+            "displayName": "Name of Table to be Filtered",
+            "defaultValue": "",
+            "description": "Table we want to count rows (click to modify)",
+            "type": ["string"],
+            "kind": "table"
         },
         {
-            "key":"__2__",
-            "name":"Column Name",
-            "description":"Column to be filtered. The column must belong to the table (click to modify)",
-            "type":"string",
-            "kind":"column"       
+            "key": "__2__",
+            "displayName": "Name of Column",
+            "defaultValue": "",
+            "description": "Column to be filtered. The column must belong to the table (click to modify)",
+            "type": ["string"],
+            "kind": "column"
         },
         {
-            "key":"__3__",
-            "name":"Number or Text Value for Filter",
-            "description":"Value the column will be filtered on (click to modify)",
-            "type":"any",
-            "kind":"userInput"
+            "key": "__3__",
+            "displayName": "Number or Text Value for Filter",
+            "defaultValue": "",
+            "description": "Value the column will be filtered on (click to modify)",
+            "type": ["string","number"],
+            "kind": "userInput"
         },
         {
-            "key":"__4__",
-            "name":"Folder1",
-            "description":"Name of folder that the measure will be placed in. (click to modify)",
-            "type":"string",
-            "kind":"metadata"       
+            "key": "__4__",
+            "displayName": "Folder1",
+            "defaultValue": "",
+            "description": "Name of folder that the measure will be placed in. (click to modify)",
+            "type": ["string"],
+            "kind": "userInput"
         },
         {
-            "key":"__5__",
-            "name":"Description",
-            "description":"Add a description for this measure. (click to modify)",
-            "type":"string",
-            "kind":"metadata"                
+            "key": "__5__",
+            "displayName": "Description",
+            "defaultValue": "",
+            "description": "Add a description for this measure. (click to modify)",
+            "type": ["string"],
+            "kind": "userInput"
         }
     ],
-    "encoding":{
-        "name":"__0__",
-        "expression": "= COUNTROWS( FILTER( __1__ , '__1__'[__2__] = __3__ ) )",
-        "format":{
-            "formatString":"#,##0",
-            "Use Parenthesis for Negative Values": false,
-            "Use Thousand Separator": true
-        },
-        "folder":"__4__",
-        "hidden":false,
-        "description":"__5__"
-    },
-    "instructions":[
+    "encoding": [
+        {
+            "name": "__0__",
+            "expression": "= COUNTROWS( FILTER( __1__ , '__1__'[__2__] = __3__ ) )",
+            "format": {
+                "formatString": "#,##0",
+                "Use Parenthesis for Negative Values": false,
+                "Use Thousand Separator": true
+            },
+            "folder": "__4__",
+            "hidden": false,
+            "description": "__5__"
+        }
+    ],
+    "instructions": [
         "Choose a name for your measure clicking on 'Measure name'",
         "Click on 'Parameter 1' and select a table from your model",
         "Click on 'Parameter 2' and select a column from the table you selected",
