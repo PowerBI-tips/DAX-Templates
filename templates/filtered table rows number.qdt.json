@@ -8,9 +8,8 @@
             "name": "Filtered Table Rows Number",
             "definition": "==========",
             "description": "This is a very simple example calculating rows number of a filtered table",
-            "author": [
-                "Didier Terrien"
-            ]
+            "author": ["Didier Terrien"],
+            "tags": ["measure"]
         }
     },
     "mappings": [
