@@ -8,9 +8,8 @@
             "name": "Date Calendar with Calendar Auto function",
             "definition": "==========",
             "description": "Uses the Calendar Auto DAX function to generate a data calendar.",
-            "author": [
-                "Mike Carlo"
-            ]
+            "author": ["Mike Carlo"],
+            "tags": ["table", "date table"]
         }
     },
     "mappings": [
