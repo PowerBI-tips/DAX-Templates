@@ -1,24 +1,31 @@
 {
-    "usermeta": {
-        "daxTemplate": {
-            "build": "0.0.1",
-            "schema": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.json"
-        },
-        "information": {
-            "name": "Simple Count Rows",
-            "definition": "==========",
-            "description": "This is a very simple example using Power BI Sidetools DAX generator",
-            "author": ["Didier Terrien"],
-            "tags": ["measure"]
-        }
-    },
+    "schema": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.json",
+    "build": "0.0.1",
+    
+    "templateName": "Simple Count Rows",
+    "definition": "==========",
+    "description": "This is a very simple example using Power BI Sidetools DAX generator",
+    
+    "author": ["Didier Terrien"],
+    "tags": ["measure"],
+    
+    "instructions": [
+        "Choose a name for your measure clicking on 'Measure name'",
+        "Click on 'Parameter 1' and select a table from your model",
+        "Click on 'Generate' button",
+        "Click on 'Create / update' button to create a measure in your model",
+        "Click on 'Debug' button to start a debug session with DAX debugger"
+    ],
+
     "mappings": [
         {
             "key": "__0__",
             "displayName": "Name of Measure",
             "defaultValue": "Total Rows in Table",
             "description": "Defines the name of generated measure DAX generator will create (click to modify)",
-            "type": ["string"],
+            "type": [
+                "string"
+            ],
             "kind": "userInput"
         },
         {
@@ -26,7 +33,9 @@
             "displayName": "Table Name",
             "defaultValue": "",
             "description": "Select the table we wish to use the CountRows function on (click to modify)",
-            "type": ["string"],
+            "type": [
+                "string"
+            ],
             "kind": "table"
         },
         {
@@ -34,7 +43,9 @@
             "displayName": "Folder1",
             "defaultValue": "_Measures",
             "description": "Name of folder that the measure will be placed in. (click to modify)",
-            "type": ["string"],
+            "type": [
+                "string"
+            ],
             "kind": "userInput"
         },
         {
@@ -42,13 +53,16 @@
             "displayName": "Description",
             "defaultValue": "Counts the number of rows in the table.",
             "description": "Add a description for this measure. (click to modify)",
-            "type": ["string"],
+            "type": [
+                "string"
+            ],
             "kind": "userInput"
         }
     ],
+    
     "encoding": [
         {
-            "type":"measure",
+            "type": "measure",
             "name": "__0__",
             "expression": "= COUNTROWS( __1__ )",
             "format": {
@@ -60,12 +74,5 @@
             "hidden": false,
             "description": "__3__"
         }
-    ],
-    "instructions": [
-        "Choose a name for your measure clicking on 'Measure name'",
-        "Click on 'Parameter 1' and select a table from your model",
-        "Click on 'Generate' button",
-        "Click on 'Create / update' button to create a measure in your model",
-        "Click on 'Debug' button to start a debug session with DAX debugger"
     ]
 }
