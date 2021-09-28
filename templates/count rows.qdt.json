@@ -17,7 +17,7 @@
         "Click on 'Debug' button to start a debug session with DAX debugger"
     ],
 
-    "mappings": [
+    "parameters": [
         {
             "key": "__0__",
             "displayName": "Name of Measure",
@@ -59,7 +59,7 @@
             "kind": "userInput"
         }
     ],
-    
+
     "encoding": [
         {
             "type": "measure",
