@@ -1,0 +1,119 @@
+{
+    "templateName": "Simple Aggregates",
+    "parameters": [
+        {
+            "parameterKey": "__tableName",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "tableName",
+            "description": "select a table from the data model",
+            "selectionKind": "table"
+        },
+        {
+            "parameterKey": "__columnName",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "columnName",
+            "description": "select a column from the data model. Column must come from the table that was selected earlier.",
+            "selectionKind": "column"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "general",
+                "UseParenthesisForNegativeValues": "false",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "min of __columnName",
+            "expression": "= MIN ( '__tableName'[__columnName] )",
+            "description": "calculates the minimum value from the __columnName column found in the __tableName table",
+            "folder": "_Simple Aggregations",
+            "hidden": "false"
+        },
+        {
+            "format": {
+                "formatString": "general",
+                "UseParenthesisForNegativeValues": "false",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "max of __columnName",
+            "expression": "= MAX ( '__tableName'[__columnName] )",
+            "description": "calculates the maximum value from the __columnName column found in the __tableName table",
+            "folder": "_Simple Aggregations",
+            "hidden": "false"
+        },
+        {
+            "format": {
+                "UseThousandSeparator": "true",
+                "UseParenthesisForNegativeValues": "false",
+                "formatString": "general"
+            },
+            "hidden": "false",
+            "folder": "_Simple Aggregations",
+            "objectType": "measure",
+            "name": "average of __columnName",
+            "expression": "= AVERAGE ( '__tableName'[__columnName] )",
+            "description": "calculates the average value from the __columnName column found in the __tableName table"
+        },
+        {
+            "format": {
+                "formatString": "general",
+                "UseParenthesisForNegativeValues": "false",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "sum of __columnName",
+            "expression": "= SUM ( '__tableName'[__columnName] )",
+            "description": "calculates the sum value from the __columnName column found in the __tableName table",
+            "folder": "_Simple Aggregations",
+            "hidden": "false"
+        },
+        {
+            "format": {
+                "formatString": "whole",
+                "UseParenthesisForNegativeValues": "false",
+                "UseThousandSeparator": "true"
+            },
+            "name": "count of __columnName",
+            "expression": "= COUNT ( '__tableName'[__columnName] )",
+            "description": "counts the number of rows in the __columnName column found in the __tableName table",
+            "folder": "_Simple Aggregations",
+            "hidden": "false"
+        },
+        {
+            "format": {
+                "formatString": "whole",
+                "UseParenthesisForNegativeValues": "false",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "distinct count of __columnName",
+            "expression": "= DISTINCTCOUNT ( '__tableName'[__columnName] )",
+            "description": "counts the number of distinct items in the __columnName column found in the __tableName table",
+            "folder": "_Simple Aggregations",
+            "hidden": "false"
+        }
+    ],
+    "authors": [
+        "Matt Allington",
+        "Mike Carlo"
+    ],
+    "supportURLs": [
+        "https://community.powerbi.com/t5/Quick-Measures-Gallery/Simple-Aggregation-Quick-Measures/td-p/210915"
+    ],
+    "tags": [
+        "aggregations"
+    ],
+    "instructions": [
+        "This template requires you to select the table and column name separately. \n1. Select a Table name from the data model\n2. Select a name of a column ( its is important to select a column from the table that was previously selected. This will not work if the column is not in the selected table above in step 1 )\n\nmeasures created in the Quick Dax Template will be placed in a folder named _Simple Aggregations."
+    ],
+    "description": "creates six measures based on a single column. Measures are created for min, max, average, sum, count and distinct counts",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "85cb8a35-ced9-44a6-9688-64d4ca1cdd9f",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
