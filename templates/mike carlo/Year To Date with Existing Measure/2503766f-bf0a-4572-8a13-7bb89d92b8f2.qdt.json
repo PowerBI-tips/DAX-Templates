@@ -1,0 +1,51 @@
+{
+    "templateName": "Year To Date",
+    "parameters": [
+        {
+            "parameterKey": "__existingMeasure__",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "measureName",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__dateColumn__",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "table[DateColumn]",
+            "selectionKind": "table[Column]"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "general",
+                "UseParenthesisForNegativeValues": "false",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "YTD of __existingMeasure__",
+            "expression": "= TOTALYTD( __existingMeasure__, __dateColumn__.[Date] )",
+            "description": "calculates the Year to date based on __existingMeasure__ measure.",
+            "hidden": "false"
+        }
+    ],
+    "authors": [
+        "Mike Carlo"
+    ],
+    "supportURLs": [
+        "https://dax.powerbi.tips"
+    ],
+    "tags": [
+        "aggregations"
+    ],
+    "instructions": [
+        "This template requires you to have an existing measure that you wish to product a Year to Date Calculation over.\n1. Select an existing measure something like a SUM of a column"
+    ],
+    "description": "based on an existing measure this template will create a single measure for a Year To Date Calculation",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "2503766f-bf0a-4572-8a13-7bb89d92b8f2",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
