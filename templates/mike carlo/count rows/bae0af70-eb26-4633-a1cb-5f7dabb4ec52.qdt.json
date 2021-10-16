@@ -1,0 +1,44 @@
+{
+    "templateName": "Count Rows",
+    "parameters": [
+        {
+            "parameterKey": "__tableName",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "tableName",
+            "description": "select a table from the data model",
+            "selectionKind": "table"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "whole",
+                "UseParenthesisForNegativeValues": "false",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "Row Count of __tableName",
+            "expression": "= COUNTROWS( __tableName )",
+            "description": "Counts the number of rows in the __tableName table",
+            "hidden": "false"
+        }
+    ],
+    "authors": [
+        "Mike Carlo"
+    ],
+    "supportURLs": [
+        "https://dax.powerbi.tips"
+    ],
+    "tags": [
+        "aggregation"
+    ],
+    "instructions": [
+        "select the table name from the data model"
+    ],
+    "description": "Creates a single measure that counts the rows in a table. ",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "bae0af70-eb26-4633-a1cb-5f7dabb4ec52",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
