@@ -1,0 +1,74 @@
+{
+    "templateName": "Year To Date",
+    "parameters": [
+        {
+            "parameterKey": "__newMeasureName",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "newMeasure",
+            "description": "this creates the name of the new measure",
+            "selectionKind": "userInput"
+        },
+        {
+            "parameterKey": "__tableColumn",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "tableColumn",
+            "description": "select a column from the data model",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__dateColumn",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "dateColumn",
+            "selectionKind": "table[Column]",
+            "description": "select a column from the data model that is a date"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "general",
+                "UseParenthesisForNegativeValues": "false",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "__newMeasureName",
+            "expression": "= SUM ( __tableColumn )",
+            "description": "creates the sum or total of the column named __tableColumn",
+            "hidden": "false"
+        },
+        {
+            "format": {
+                "formatString": "general",
+                "UseParenthesisForNegativeValues": "false",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "YTD of __newMeasureName",
+            "expression": "= TOTALYTD ( __newMeasureName , __dateColumn )",
+            "description": "based on the __newMeasureName measure this calculation creates a Year To Date",
+            "hidden": "false"
+        }
+    ],
+    "authors": [
+        "Mike Carlo"
+    ],
+    "supportURLs": [
+        "https://dax.powerbi.tips"
+    ],
+    "tags": [
+        "aggregations"
+    ],
+    "instructions": [
+        "This template creates a SUM based on a column input. Then a\n1. select column to be summed\n2. select a name for the new measure\n3. select a date column to calculate the Year to Date"
+    ],
+    "description": "based on an existing measure this template will create a single measure for a Year To Date Calculation",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "cc222e8a-8433-4661-80d1-4a7dfac6b476",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
