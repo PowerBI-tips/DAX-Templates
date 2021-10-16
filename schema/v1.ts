@@ -57,16 +57,16 @@ export const schema = {
                 const: 'measure',
               },
               {
-                title: 'Column',
-                const: 'column',
+                title: 'Table[Column]',
+                const: 'table[Column]',
               },
               {
                 title: 'Table',
                 const: 'table',
               },
               {
-                title: 'Table[Column]',
-                const: 'table[Column]',
+                title: 'Column',
+                const: 'column',
               },
               {
                 title: 'Date',
@@ -101,12 +101,12 @@ export const schema = {
                 const: 'measure',
               },
               {
-                title: 'Column',
-                const: 'column',
-              },
-              {
                 title: 'Table',
                 const: 'table',
+              },
+              {
+                title: 'Calculated Column',
+                const: 'column',
               },
             ],
           },
