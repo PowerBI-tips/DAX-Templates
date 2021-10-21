@@ -15,7 +15,7 @@
         {
             "format": {},
             "objectType": "measure",
-            "expression": "=\n// Calculate the Average Score for given filter context\nVAR _score = AVERAGE( __starColumn )\n\n// Enter the number for the total number of stars \nVAR _totalStarCount = 5\n\n// Protect against Maxing Out Stars\nVAR _positiveStarCount = if(_score > _totalStarCount, _totalStarCount, _score ) \n\n// Calculate the number of unfilled stars\nVAR _unfilledStarCount = _positiveStarCount - _totalStarCount\n\nRETURN \n    // Creates the filled in stars\n    REPT ( UNICHAR(9733), _positiveStarCount )\n    \n    // Create the unfilled stars \n    & REPT ( UNICHAR(9734), _unfilledStarCount)",
+            "expression": "=\n// Calculate the Average Score for given filter context\nVAR _score = AVERAGE( __starColumn )\n\n// Enter the number for the total number of stars \nVAR _totalStarCount = 5\n\n// Protect against Maxing Out Stars\nVAR _positiveStarCount = if(_score > _totalStarCount, _totalStarCount, _score ) \n\n// Calculate the number of unfilled stars\nVAR _unfilledStarCount = _totalStarCount - _positiveStarCount\n\nRETURN \n    // Creates the filled in stars\n    REPT ( UNICHAR(9733), _positiveStarCount )\n    \n    // Create the unfilled stars \n    & REPT ( UNICHAR(9734), _unfilledStarCount)",
             "name": "Stars",
             "description": "Creates a text based measure that shows the number of stars",
             "hidden": "false"
