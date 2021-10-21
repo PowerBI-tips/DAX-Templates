@@ -20,7 +20,7 @@
             },
             "objectType": "measure",
             "name": "Row Count of __tableName",
-            "expression": "= COUNTROWS( __tableName )",
+            "expression": "= COUNTROWS( '__tableName' )",
             "description": "Counts the number of rows in the __tableName table",
             "hidden": "false"
         }
