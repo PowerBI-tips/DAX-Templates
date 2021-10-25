@@ -1,0 +1,62 @@
+{
+    "templateName": "Year-to-date of measure",
+    "parameters": [
+        {
+            "parameterKey": "__Measure",
+            "dataType": [
+                "number"
+            ],
+            "displayName": "Measure",
+            "defaultValue": "",
+            "description": "Measure to perform ytd aggregation",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__DateColumn",
+            "dataType": [
+                "date"
+            ],
+            "displayName": "DateColumn",
+            "description": "Date column to iterate over for the filter",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__YearEnd",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "YearEnd",
+            "description": "End date of year as a m-dd",
+            "selectionKind": "userInput"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "general",
+                "UseParenthesisForNegativeValues": "false",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "Year-to-date",
+            "expression": "= CALCULATE ([__Measure], DATESYTD (__DateColumn, \"__YearEnd\"))",
+            "description": "Calculates a year-to-date accumulation of a measure, where the user specifies the year end month and day like m-dd for calendar, fiscal or other ytd measures",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "time"
+    ],
+    "authors": [
+        "Joel Sherman"
+    ],
+    "instructions": [
+        "If you want fiscal year-to-date and your fiscal year ends June 30, set YearEnd = 6-30.  If you want calendar year-to-date, set YearEnd = 12-31.  Note:  you do not need to put the YearEnd in quotations"
+    ],
+    "supportURLs": [],
+    "description": "Calculates the year-to-date accumulation of a measure with a user-configurable year end date (for controlling fiscal vs calendar ytd aggs)",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "efac145c-2fde-46cf-8c7b-08157a33e53d",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
