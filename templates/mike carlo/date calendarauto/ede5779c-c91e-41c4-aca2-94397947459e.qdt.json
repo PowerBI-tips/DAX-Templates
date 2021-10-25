@@ -1,0 +1,35 @@
+{
+    "templateName": "Calendar Auto Date Table",
+    "parameters": [],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "",
+                "UseParenthesisForNegativeValues": "",
+                "UseThousandSeparator": ""
+            },
+            "objectType": "table",
+            "name": "Calendar Dates",
+            "expression": "=\n  GENERATE (\n    CALENDARAUTO(),\n    VAR currentDay = [Date]\n    VAR day = DAY( currentDay )\n    VAR month =  MONTH ( currentDay )\n    VAR year =  YEAR ( currentDay )\n  RETURN  ROW ( \n    \"day\", day,\n    \"month\", month,\n    \"year\", year )\n  )",
+            "description": "Calendar dates automatically generated from all observed dates in the data model",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "time"
+    ],
+    "authors": [
+        "Mike Carlo"
+    ],
+    "instructions": [
+        "To create a date table based on the CALENDARAUTO function\n\n1. Enter the name of the Date Calendar"
+    ],
+    "supportURLs": [
+        "https://powerbi.tips/2017/11/creating-a-dax-calendar/"
+    ],
+    "description": "Creates a Date Table from the DAX function Calendar Auto",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "ede5779c-c91e-41c4-aca2-94397947459e",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
