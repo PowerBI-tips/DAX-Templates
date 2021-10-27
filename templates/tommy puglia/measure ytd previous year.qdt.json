@@ -1,0 +1,62 @@
+{
+    "templateName": "Measure YtD Previous Year",
+    "parameters": [
+        {
+            "parameterKey": "__DateKey",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "DateKey",
+            "defaultValue": "",
+            "description": "Add in your Date Column, from your Dim Date Table",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__MetricYtD",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "MetricYtD",
+            "description": "Add in Measure that is current YtD",
+            "selectionKind": "measure",
+            "defaultValue": ""
+        },
+        {
+            "parameterKey": "__factDateColumn",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "factDateColumn",
+            "description": "add in from fact table the last date for a metric. If none then use same table column as DateKey",
+            "selectionKind": "table[Column]",
+            "defaultValue": "__DateKey"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "whole",
+                "UseParenthesisForNegativeValues": "true",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "__MetricYtD PY",
+            "expression": "= VAR LastDaySelection =\n    LASTNONBLANK (\n       __DateKey,\n        [__MetricYtD]\n    )\nVAR CurrentRange =\n    DATESBETWEEN (\n        __DateKey,\n        MIN ( __factDateColumn),\n        LastDaySelection\n    )\nVAR PreviousRange =\n    SAMEPERIODLASTYEAR ( CurrentRange )\nRETURN\n    IF (\n        LastDaySelection >= MIN ( __DateKey),\n        CALCULATE ( [__MetricYtD], PreviousRange )\n    )",
+            "description": "Creates a Previous Year YtD measure, but only up to the current date of this year or selection. Rather than looking at the entire previous year, it focuses on the same time frame of this year",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "time"
+    ],
+    "authors": [
+        "Tommy Puglia"
+    ],
+    "instructions": ["1. Select a date column to be used for the calculation\n2. Add a name for the new measure\n3.  "],
+    "supportURLs": [],
+    "description": "Creates a Previous Year YtD measure, but only up to the current date of this year or selection. Rather than looking at the entire previous year, it focuses on the same time frame of this year",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "718ccf93-e139-4727-8ac2-f3540a2c9d3b",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
