@@ -1,0 +1,76 @@
+{
+    "templateName": "Measure Table",
+    "parameters": [
+        {
+            "parameterKey": "__Measure1",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "Measure1",
+            "defaultValue": "",
+            "description": "Select your a measure to be used in the switch statement",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__Measure2",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "Measure2",
+            "description": "Select your a measure to be used in the switch statement",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__Measure3",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "Measure3",
+            "description": "Select your a measure to be used in the switch statement",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__Measure4",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "Measure4",
+            "description": "Select your a measure to be used in the switch statement",
+            "selectionKind": "measure"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "",
+                "UseParenthesisForNegativeValues": "",
+                "UseThousandSeparator": ""
+            },
+            "objectType": "table",
+            "name": "Measure Switch Table",
+            "expression": "= \nDATATABLE(\n    \"MeasureName\", STRING, \n    {{\"__Measure1\"},\n    {\"__Measure2\"},\n    {\"__Measure3\"},\n    {\"__Measure4\"}} \n    )",
+            "description": "Table that is used to create a list of measures from the model",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "text"
+    ],
+    "authors": [
+        "Mike Carlo",
+        "rsaprano"
+    ],
+    "instructions": [
+        "This table creates a list of measures\n\n1. Select 4 different measures from your data model "
+    ],
+    "supportURLs": [
+        "https://community.powerbi.com/t5/Quick-Measures-Gallery/Dynamic-Measures-Titles-Using-SWITCH/td-p/200718",
+        "https://app.powerbi.com/view?r=eyJrIjoiY2I1NjJmYjQtNWIzNy00NTFkLTg3N2UtMTM4YmFmNjA2MDA3IiwidCI6IjBjNzk5ZDM4LTQ3NjQtNDJiYy1iNGZmLTIzYmViYTljN2ZlMiIsImMiOjh9",
+        "https://community.powerbi.com/oxcrx34285/attachments/oxcrx34285/QuickMeasuresGallery/23/2/Quick%20Measures%20-%20Dynamic%20Measure%20using%20SWITCH%20example.pbix"
+    ],
+    "description": "Create a table with a list of measures to use in a Measure Switch Statement",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "9b50b8fd-5d14-453e-b663-48b172c1864f",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}

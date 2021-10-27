@@ -1,0 +1,79 @@
+{
+    "templateName": "Selected Measure Using Switch",
+    "parameters": [
+        {
+            "parameterKey": "__Parameter1",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "table[Column]",
+            "defaultValue": "",
+            "description": "select a single column from the data model",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__Parameter2",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "Measure1",
+            "description": "select a measure from your data model",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__Parameter3",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "Measure2",
+            "description": "select a measure from your data model",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__Parameter4",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "Measure3",
+            "description": "select a measure from your data model",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__Parameter5",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "Measure4",
+            "description": "select a measure from your data model",
+            "selectionKind": "measure"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "",
+                "UseParenthesisForNegativeValues": "",
+                "UseThousandSeparator": ""
+            },
+            "objectType": "measure",
+            "name": "Selected Measure",
+            "expression": "= \nIF(\n    HASONEVALUE( __Parameter1 ),\n    SWITCH(\n        VALUES( __Parameter1 ),\n        \"__Parameter2\",    [__Parameter2],\n        \"__Parameter3\",    [__Parameter3],\n        \"__Parameter4\",    [__Parameter4],\n        \"__Parameter5\",    [__Parameter5]\n        )\n    , [__Parameter2]\n    )",
+            "description": "A single measure that toggles between other calculations",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "math ops."
+    ],
+    "authors": [
+        "Mike Carlo",
+        "rsaprano"
+    ],
+    "instructions": [],
+    "supportURLs": [],
+    "description": "Creates a single measure that selects from a list of predefined measures",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "d07ab760-c7a7-4911-ab7b-0fab2e983264",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
