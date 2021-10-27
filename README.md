@@ -1,8 +1,6 @@
-# DAX-Templates
+# DAX Templates
 
 Gallery for Collection of relevant measures, tables, and columns generated from DAX.
-
-# DAX Templates
 
 DAX is easy to learn but difficult to master.
 
@@ -78,6 +76,20 @@ template
 │       │   *qdt.json
 │       │   Sample.PBIX (optional)
 ```
+
+## Please Format the *.qdt.json
+In order to make the quick DAX templates more human readable please format the JSON files. 
+
+If you are using Studio Code to open the `*.qdt.json` files you can use the short cut key `Shift + Alt + f` to automatically format the json file.
+
+> It is recommended to open JSON files with Studio Code. If you don't have this program please [download it here](https://code.visualstudio.com/download).
+
+## Creating a Pull request
+This describes the process of adding your designed DAX templates to this repo. 
+
+1. Create a Fork of the [DAX-Templates](https://github.com/PowerBI-tips/DAX-Templates)
+1. Complete your code changes in your forked branch
+1. Push your branch up to github and create a pull request between your forked branch and dax templates main
 
 ## Proprietary Information
 Any templates that are being submitted with any company specific or information deemed to be proprietary will not be accepted. 
