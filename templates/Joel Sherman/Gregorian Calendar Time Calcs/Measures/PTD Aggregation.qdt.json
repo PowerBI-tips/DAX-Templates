@@ -1,0 +1,81 @@
+{
+    "templateName": "PTD Aggregation",
+    "parameters": [
+        {
+            "parameterKey": "__PeriodType",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "PeriodType",
+            "defaultValue": "",
+            "description": "The type of period that you want to use in your period-to-date calculation.  Use quotations.  Can be \"CYTD\", \"FYTD\", \"QTD\" or \"MTD\"",
+            "selectionKind": "userInputModel"
+        },
+        {
+            "parameterKey": "__BaseMeasure",
+            "dataType": [
+                "number"
+            ],
+            "displayName": "BaseMeasure",
+            "description": "The base measure for which you want to calculate a period-to-date aggregation",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__DateTableField",
+            "dataType": [
+                "date"
+            ],
+            "displayName": "DateTableField",
+            "description": "The date field in your date table/dimension",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__YearEndDate",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "YearEndDate",
+            "description": "Your fiscal year-end date as a M-DD (like \"6-30\" for June 30).  Use quotations.",
+            "selectionKind": "userInputModel",
+            "defaultValue": "\"6-30\""
+        },
+        {
+            "parameterKey": "__ShowValueForDates",
+            "dataType": [
+                "true / false"
+            ],
+            "displayName": "ShowValueForDates",
+            "description": "The ShowValueForDates measure that should be hidden in your Date table, which hides values in future dates for which there are no facts.  See Show Value for Dates template to produce this measure.",
+            "selectionKind": "measure"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "",
+                "UseParenthesisForNegativeValues": "",
+                "UseThousandSeparator": ""
+            },
+            "objectType": "measure",
+            "name": "PTD",
+            "expression": "= \nVAR PeriodType = __PeriodType\nVAR CYTD = IF ( [__ShowValueForDates], CALCULATE ( [__BaseMeasure], DATESYTD ( __DateTableField ) ) )\nVAR FYTD = IF ( [__ShowValueForDates], CALCULATE ( [__BaseMeasure], DATESYTD ( __DateTableField, __YearEndDate ) ) )\nVAR QtrTD = IF ( [__ShowValueForDates], CALCULATE ( [__BaseMeasure], DATESQTD ( __DateTableField ) ) )\nVAR MntTD = IF ( [__ShowValueForDates], CALCULATE ( [__BaseMeasure], DATESMTD ( __DateTableField ) ) )\nVAR Result = SWITCH ( PeriodType, \"CYTD\", CYTD, \"FYTD\", FYTD, \"QTD\", QtrTD, MntTD )\nRETURN Result",
+            "description": "Period-to-date aggregation of a base measure",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "time"
+    ],
+    "authors": [
+        "Joel Sherman"
+    ],
+    "instructions": [
+        "In order to use this template to create a period-to-date (PTD) measure, you first need to:\n\nA. Have a base measure already computed in your model. For example, Sum of Sales, Count of Transactions, etc.  See Base Measures folder for some example templates.\n\nB. Have a Show Value for Dates measure in your Date dimension that is hidden, but which controls how time intelligence calculations display in visuals.  See Show Value for Dates template to create.\n\nAfter that, you can use this template to build your period-to-date measure.  Be sure to specify the PeriodType in order to specify calendar year-to-date, fiscal year-to-date, quarter-to-date or month-to-date aggregations. "
+    ],
+    "supportURLs": [],
+    "description": "Aggregates a base measure for a custom period-to-date (PTD) specified by the user.  This can be CYTD, FYTD, QTD or MTD.  The measure controls or hides values in future dates, for which there are no facts using a separate measure that the user should create (see Show Value for Dates template) and hide in their date table.",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "aeecaec2-1fc8-4aba-9629-a540edda4fd4",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
