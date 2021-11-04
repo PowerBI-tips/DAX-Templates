@@ -1,0 +1,42 @@
+{
+  "templateName": "Selected Time Range",
+  "parameters": [
+    {
+      "parameterKey": "__tableColumn",
+      "dataType": ["string"],
+      "displayName": "tableColumn",
+      "defaultValue": "",
+      "description": "Select a Date Column from the data model.",
+      "selectionKind": "measure"
+    }
+  ],
+  "encoding": [
+    {
+      "format": {
+        "formatString": "text",
+        "UseParenthesisForNegativeValues": "",
+        "UseThousandSeparator": ""
+      },
+      "objectType": "measure",
+      "name": "Selected Date Range",
+      "expression": "= \"Selected Dates from \" & MIN( __tableColumn ) & \" - \" & MAX( __tableColumn ) ",
+      "description": "A text phrase that describes the start and end date ranges which were selected by the user. ",
+      "folder": "",
+      "hidden": "false"
+    }
+  ],
+  "tags": ["time"],
+  "authors": ["Mike Carlo"],
+  "instructions": [
+    "This Quick Dax Template is intended to create a simple text output that shows the start and end dates for a given selected Date Range.\n\n1. Select a Date Column from the data model. "
+  ],
+  "supportURLs": [
+    "https://dax.powerbi.tips",
+    "https://dax.guide/min",
+    "https://dax.guide/max"
+  ],
+  "description": "Creates a measure to show the selected time range based on a Date Column ",
+  "buildVersion": "v1.0.0",
+  "uniqueId": "73235cb6-5b54-4fea-a347-c25c03c558a3",
+  "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
