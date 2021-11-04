@@ -39,7 +39,7 @@ To begin contributing to the project. Please read the following getting started.
     - be sure to **Restart** Power BI Desktop as External Tools are only added during the start up process of Power BI Desktop
 
 1. Create a DAX Template using [DAX.powerbi.tips](https://dax.powerbi.tips/)
-    - Be sure to include as much information as possible
+    - Be sure to include as much information as possible. The template description is particularly important to let users find and understand your template.
     - Best practice is to provide some sort of link to a document / blog article that illustrates how to use your measure. 
 
 1. Once the DAX template has been made download the DAX template
