@@ -47,7 +47,7 @@
     ],
     "supportURLs": [
         "https://community.powerbi.com/t5/Quick-Measures-Gallery/Top-1-per-category/td-p/225700",
-        "https://dax.powerbi.tips"
+        "https://dax.powerbi.tips","https://dax.guie/calculate"
     ],
     "description": "Sometimes it can be valuable to simply show what the top performing products or customers are. The TopN() filter in Power BI makes this an easy task but is bounded to a visual. To get the best performing category in a single measure, this Quick calculation can be used.",
     "buildVersion": "v1.0.0",
