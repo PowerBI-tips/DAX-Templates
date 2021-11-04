@@ -1,0 +1,69 @@
+{
+    "templateName": "DAX sparklines",
+    "parameters": [
+        {
+            "parameterKey": "__dateColumn",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "dateColumn",
+            "selectionKind": "table[Column]",
+            "description": "Select a date column that has continuous dates"
+        },
+        {
+            "parameterKey": "__dateTable",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "dateTable",
+            "description": "Select the name of the date table that the date Column came from",
+            "selectionKind": "table"
+        },
+        {
+            "parameterKey": "__measureValue",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "measureValue",
+            "selectionKind": "measure",
+            "description": "Select an Aggregate Measure for example sum of sales"
+        },
+        {
+            "parameterKey": "__categoryValues",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "categoryValues",
+            "description": "Pick a column from the data model that has categorical values",
+            "selectionKind": "table[Column]"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {},
+            "expression": "= \n// Static line color - use %23 instead of # for Firefox compatibility\nVAR LineColor = \"%2301B8AA\"\n\n// \"Date\" field used in this example along the X axis\nVAR XMinDate = MIN( __dateColumn )\nVAR XMaxDate = MAX( __dateColumn )\n\n// Obtain overall min and overall max measure values when evaluated for each date\nVAR YMinValue = MINX( VALUES( __dateColumn ) , CALCULATE( [__measureValue] ) )\nVAR YMaxValue = MAXX( VALUES( __dateColumn ) , CALCULATE( [__measureValue] ) )\n\n// Build table of X & Y coordinates and fit to 100 x 100 viewbox\nVAR SparklineTable = ADDCOLUMNS(\n    SUMMARIZE( '__dateTable' , __dateColumn ),\n        \"X\",INT(100 * DIVIDE( __dateColumn - XMinDate, XMaxDate - XMinDate)),\n        \"Y\",INT(100 * DIVIDE( [__measureValue] - YMinValue,YMaxValue - YMinValue)))\n\n// Concatenate X & Y coordinates to build the sparkline\nVAR Lines = CONCATENATEX( SparklineTable , [X] & \",\" & 100-[Y],\" \", [Date])\n\n// Add to SVG, and verify Data Category is set to Image URL for this measure\nVAR SVGImageURL = IF( HASONEVALUE( __categoryValues ) ,\n    \"data:image/svg+xml;utf8,\" & \n    \"<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 100 100'>\" &\n     \"<polyline fill='none' stroke='\" & LineColor & \n     \"' stroke-width='3' points='\" & Lines & \n     \"'/></svg>\",\n     BLANK())\nRETURN SVGImageURL",
+            "name": "Sparkline Line ",
+            "description": "Creates an SVG sparkline based on the measure named __measureValue",
+            "hidden": "false"
+        }
+    ],
+    "authors": [
+        "David Eldersveld",
+        "Mike Carlo"
+    ],
+    "supportURLs": [
+        "https://community.powerbi.com/t5/Quick-Measures-Gallery/SVG-Sparklines-Line/td-p/486271",
+        "https://gist.github.com/deldersveld/62523ca8350ac97797131560cb317677",
+        "https://app.powerbi.com/view?r=eyJrIjoiOTExYmFjNTAtYzRkNy00YzU3LWJjOWUtY2M2YjM3YjI1MzkwIiwidCI6ImFjYzhhYWE1LWYxOTEtNDgyZi05MjFiLWNmNmMzM2E1ODgzMiIsImMiOjF9"
+    ],
+    "tags": [
+        "svg"
+    ],
+    "instructions": [
+        "This measure creates a Sparkline using a measure. \nYou will need the following items in this measure\n1. A date Column which defines the x-axis of the Sparkline\n2. The table name where the date column exists\n3. An Aggregated value as a measure, something like SUM of sales\n4. A Categorical column, this will have to be a dimension that is inside the table where the Sparkline will be placed\n\nInstructions\n1. Pick the date column\n2. Pick the Table where the date column came from\n3. Pick an aggregation measure\n4. Pick a Categorical column in which the table will have. "
+    ],
+    "description": "Creates a sparkline as a svg DAX measure",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "9c8d7a1b-268e-42b6-95d0-8b3878552abb",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}

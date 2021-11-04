@@ -1,5 +1,5 @@
 {
-    "templateName": "Year To Date",
+    "templateName": "Year To Date using existing measure",
     "parameters": [
         {
             "parameterKey": "__existingMeasure__",

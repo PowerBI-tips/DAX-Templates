@@ -1,0 +1,64 @@
+{
+    "templateName": "Correlation Coefficient",
+    "parameters": [
+        {
+            "parameterKey": "__categoricalColumn",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "categoricalColumn",
+            "description": "Column that contains the categorical values",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__measureX",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "measureX",
+            "description": "The first measure in a correlation pair",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__measureY",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "measureY",
+            "description": "The second measure in a correlation pair",
+            "selectionKind": "measure"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "general",
+                "UseParenthesisForNegativeValues": "false",
+                "UseThousandSeparator": "false"
+            },
+            "name": "Correlation Coefficient",
+            "objectType": "measure",
+            "expression": "= VAR Correlation_Table =\n    FILTER (\n        ADDCOLUMNS (\n            VALUES ( __categoricalColumn ),\n            \"Value_X\", CALCULATE ( __measureX ),\n            \"Value_Y\", CALCULATE ( __measureY )\n        ),\n        AND (\n            NOT ( ISBLANK ( [Value_X] ) ),\n            NOT ( ISBLANK ( [Value_Y] ) )\n        )\n    )\nVAR Count_Items =\n    COUNTROWS ( Correlation_Table )\nVAR Sum_X =\n    SUMX ( Correlation_Table, [Value_X] )\nVAR Sum_X2 =\n    SUMX ( Correlation_Table, [Value_X] ^ 2 )\nVAR Sum_Y =\n    SUMX ( Correlation_Table, [Value_Y] )\nVAR Sum_Y2 =\n    SUMX ( Correlation_Table, [Value_Y] ^ 2 )\nVAR Sum_XY =\n    SUMX ( Correlation_Table, [Value_X] * [Value_Y] )\nVAR Pearson_Numerator =\n    Count_Items * Sum_XY - Sum_X * Sum_Y\nVAR Pearson_Denominator_X =\n    Count_Items * Sum_X2 - Sum_X ^ 2\nVAR Pearson_Denominator_Y =\n    Count_Items * Sum_Y2 - Sum_Y ^ 2\nVAR Pearson_Denominator =\n    SQRT ( Pearson_Denominator_X * Pearson_Denominator_Y )\nRETURN\n    DIVIDE ( Pearson_Numerator, Pearson_Denominator ",
+            "description": "calculates how correlated the two measures ( __measureX and __measureY ) are corelated based on a column of categories",
+            "hidden": "false"
+        }
+    ],
+    "authors": [
+        "Daniil Maslyuk",
+        "Mike Carlo"
+    ],
+    "supportURLs": [
+        "https://community.powerbi.com/t5/Quick-Measures-Gallery/Correlation-coefficient/td-p/196274",
+        "https://community.powerbi.com/oxcrx34285/attachments/oxcrx34285/QuickMeasuresGallery/21/2/Correlation.pbix"
+    ],
+    "tags": [
+        "statistics"
+    ],
+    "instructions": [
+        "This quick measure calculates the correlation between two measures based on a set list of categories.\n1. Select a column of categorical values\n2. Select a measure\n3. Select a second measure to corelate against the previously selected measure ( should be a different measure that previously selected )"
+    ],
+    "description": "Calculate the Pearson correlation coefficient between two measures within the category",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "9ed58a9d-4b43-4ee1-9d80-40511912c35f",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}

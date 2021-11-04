@@ -1,5 +1,5 @@
 {
-    "templateName": "Simple Aggregates",
+    "templateName": "Simple Aggregates Build Multiple Measures at Once",
     "parameters": [
         {
             "parameterKey": "__tableName",

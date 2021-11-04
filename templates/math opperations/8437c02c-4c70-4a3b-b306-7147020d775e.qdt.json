@@ -1,0 +1,66 @@
+{
+    "templateName": "Daniil - Simple Linear Regression",
+    "parameters": [
+        {
+            "parameterKey": "__Category",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "Category Value",
+            "defaultValue": "tableColumn",
+            "description": "A column that has Categorical values in it.",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__MeasureX",
+            "dataType": [
+                "number"
+            ],
+            "displayName": "Measure X",
+            "defaultValue": "measureX",
+            "description": "Known X (independent) values",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__MeasureY",
+            "dataType": [
+                "number"
+            ],
+            "displayName": "Known Y",
+            "defaultValue": "measureY",
+            "description": "Known Y (dependent) values",
+            "selectionKind": "measure"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "whole",
+                "UseParenthesisForNegativeValues": "false",
+                "UseThousandSeparator": "true"
+            },
+            "name": "Estimated __MeasureY",
+            "expression": "=\nVAR Known =\n    FILTER (\n        SELECTCOLUMNS (\n            ALLSELECTED ( __Category ),\n            \"Known[X]\", CALCULATE ( __MeasureX ),\n            \"Known[Y]\", CALCULATE ( __MeasureY )\n        ),\n        AND (\n            NOT ( ISBLANK ( Known[X] ) ),\n            NOT ( ISBLANK ( Known[Y] ) )\n        )\n    )\nVAR Count_Items =\n    COUNTROWS ( Known )\nVAR Sum_X =\n    SUMX ( Known, Known[X] )\nVAR Sum_X2 =\n    SUMX ( Known, Known[X] ^ 2 )\nVAR Sum_Y =\n    SUMX ( Known, Known[Y] )\nVAR Sum_XY =\n    SUMX ( Known, Known[X] * Known[Y] )\nVAR Average_X =\n    AVERAGEX ( Known, Known[X] )\nVAR Average_Y =\n    AVERAGEX ( Known, Known[Y] )\nVAR Slope =\n    DIVIDE (\n        Count_Items * Sum_XY - Sum_X * Sum_Y,\n        Count_Items * Sum_X2 - Sum_X ^ 2\n    )\nVAR Intercept =\n    Average_Y - Slope * Average_X\nRETURN\n    Intercept + Slope * __MeasureX",
+            "description": "This measure allows you to predict dependent values Y from independent values X.",
+            "hidden": "false"
+        }
+    ],
+    "authors": [
+        "Daniil Maslyuk",
+        "Mike Carlo"
+    ],
+    "supportURLs": [
+        "https://xxlbi.com/blog/simple-linear-regression-in-dax/",
+        "https://community.powerbi.com/t5/Quick-Measures-Gallery/Simple-Linear-Regression/td-p/247439",
+        "https://community.powerbi.com/oxcrx34285/attachments/oxcrx34285/QuickMeasuresGallery/55/4/Simple%20linear%20regression.pbix",
+        "https://www.linkedin.com/in/daniilmaslyuk/"
+    ],
+    "tags": [],
+    "instructions": [
+        "With simple linear regression, you can estimate the quantitative relationship between any two variables.\n\n1. Enter the Categorical value as a table[column]\n2. Enter Measure X\n3. Enter Measure Y"
+    ],
+    "description": "Estimate Y values based on X values",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "8437c02c-4c70-4a3b-b306-7147020d775e",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}

@@ -1,0 +1,56 @@
+{
+    "templateName": "Top 1 Per Category",
+    "parameters": [
+        {
+            "parameterKey": "__tableColumn",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "tableColumn",
+            "defaultValue": "",
+            "description": "Select a categorical column within the data model",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__measureName",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "measureName",
+            "description": "Select an aggregation measure from within the model",
+            "selectionKind": "measure"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "text",
+                "UseParenthesisForNegativeValues": "",
+                "UseThousandSeparator": ""
+            },
+            "objectType": "measure",
+            "name": "Top 1 __tableColumn for __measureName",
+            "expression": "= \nCALCULATE( \n    LASTNONBLANK( __tableColumn , 1 )\n    , FILTER( TOPN( 1, VALUES( __tableColumn ) , [__measureName], DESC), TRUE() )\n)",
+            "description": "Calculates a single text name for the top item based on the __measureName aggregation",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "text"
+    ],
+    "authors": [
+        "Mike Carlo"
+    ],
+    "instructions": [
+        "This measure produces a single value of text. The text value is based on the top 1 items based on the measure. \n\n1. Select a column from the data model of the categorical values\n2. Select a measure from the data model that will be used to determine the top 1 item"
+    ],
+    "supportURLs": [
+        "https://community.powerbi.com/t5/Quick-Measures-Gallery/Top-1-per-category/td-p/225700",
+        "https://dax.powerbi.tips"
+    ],
+    "description": "Sometimes it can be valuable to simply show what the top performing products or customers are. The TopN() filter in Power BI makes this an easy task but is bounded to a visual. To get the best performing category in a single measure, this Quick calculation can be used.",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "6395acca-a6b1-4ad5-8443-41662d925c41",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}

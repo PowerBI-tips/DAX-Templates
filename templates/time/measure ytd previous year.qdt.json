@@ -1,5 +1,5 @@
 {
-    "templateName": "Measure YtD Previous Year",
+    "templateName": "Measure YTD Previous Year",
     "parameters": [
         {
             "parameterKey": "__DateKey",

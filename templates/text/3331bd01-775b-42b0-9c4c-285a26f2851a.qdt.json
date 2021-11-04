@@ -1,0 +1,55 @@
+{
+    "templateName": "Star Ratings 1 to n",
+    "parameters": [
+        {
+            "parameterKey": "__starColumn",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "starColumn",
+            "description": "select a column that has a number between 1 to 5 for the star ratings",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__totalStarCount",
+            "dataType": [
+                "number"
+            ],
+            "displayName": "totalStarCount",
+            "description": "Enter the max number of stars for the measure",
+            "selectionKind": "userInput",
+            "defaultValue": "5"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "general"
+            },
+            "objectType": "measure",
+            "expression": "=\n// Calculate the Average Score for given filter context\nVAR _score = AVERAGE( __starColumn )\n\n// Enter the number for the total number of stars \nVAR _totalStarCount = __totalStarCount\n\n// Protect against Maxing Out Stars\nVAR _positiveStarCount = if(_score > _totalStarCount, _totalStarCount, _score ) \n\n// Calculate the number of unfilled stars\nVAR _unfilledStarCount = _totalStarCount - _positiveStarCount\n\nRETURN \n    // Creates the filled in stars\n    REPT ( UNICHAR(9733), _positiveStarCount )\n    \n    // Create the unfilled stars \n    & REPT ( UNICHAR(9734), _unfilledStarCount)",
+            "name": "Stars",
+            "description": "Creates a text based measure that shows the number of stars",
+            "hidden": "false"
+        }
+    ],
+    "authors": [
+        "Chris Webb",
+        "Mike Carlo"
+    ],
+    "supportURLs": [
+        "https://community.powerbi.com/t5/Quick-Measures-Gallery/Star-Ratings/td-p/166903",
+        "https://community.powerbi.com/oxcrx34285/attachments/oxcrx34285/QuickMeasuresGallery/12/2/StarsQuickMeasure.pbix",
+        "https://app.powerbi.com/view?r=eyJrIjoiYzYzZmFkMDEtZmFhZi00MzJlLWE2NGEtZGE3ZjFiOTRiYzRmIiwidCI6ImEyODQ0OTIzLTEyMTgtNGQzNi1hN2M1LTk1ODJhMzhhNGU1ZCIsImMiOjh9"
+    ],
+    "tags": [
+        "text"
+    ],
+    "instructions": [
+        "This template uses a UNICHAR() value to either show a colored in star or a hollow star. This measure is based off of a single column that has numbers that range between 1 to 5. Measure will only report in full star increments as there is no UNICHAR() value for half stars. \n\n1. select a column from the data model that has only 1 to 5 values"
+    ],
+    "description": "This quick measure displays a score or rating out of five as a series of filled and unfilled stars. In the example in the report, there is a table called restaurants and a numeric column on that table called Score that contains a rating out of five. This measure takes the value in the Score column and displays the same number of filled stars ( using the DAX UNICHAR() function ) followed by whatever number of unfilled stars are needed to make the total number of stars up to five.",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "3331bd01-775b-42b0-9c4c-285a26f2851a",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
