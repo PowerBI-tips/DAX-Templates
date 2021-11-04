@@ -55,26 +55,31 @@ To begin contributing to the project. Please read the following getting started.
 
 ## Submissions
 
-Please only submit *.qdt.json files into the templates folder. 
+Please only submit *.qdt.json files into the templates folder.
 
-Each Author Submitting files should create a name for their submission, then create a named folder for the quick template. This enables users who wish to submit a PBIX file in addition to a quick dax template into the repo.
+> Note: In November 2021 a major change was made to the folder structure. This was done to simplify the discover and integration of qdt files into external tools. 
+
+### Learning folder
+
+This folder is designed for sample template files that can be used as examples for users to learn how to use quick DAX templates. It is recommended to house *.qdt.json files and sample PBIX files that help illustrate how to apply the DAX template files. 
+
+If you feel you have content you wish to contribute to the learn folder please consider adding a copy of the *.qdt.json file into the templates folder.  This enables the community to have a single place for all templates. 
 
 ## template folder structure
 
 ```
 template
 │
-└─── Author1 Name
+└─── Topic1 (aggregations per category, math operations, text, time, or totals)
 │   │
-│   └─── Quick Measure Name
-│       │   *qdt.json
-│       │   Sample.PBIX (optional)
+│   └─── *.qdt.json
+│   └─── Logical Folder Grouping (if needed)
+│       │   *.qdt.json
 │   
-└─── Author2 Name
+└─── Topic2 (aggregations per category, math operations, text, time, or totals)
 │   │
-│   └─── Quick Measure Name
-│       │   *qdt.json
-│       │   Sample.PBIX (optional)
+│   └─── *.qdt.json 
+│   └─── *.qdt.json 
 ```
 
 ## Please Format the *.qdt.json
