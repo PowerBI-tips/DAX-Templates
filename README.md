@@ -47,7 +47,7 @@ To begin contributing to the project. Please read the following getting started.
 1. Test the DAX template by adding it into the DAX Generator
     - **Open** DAX Generator from the Power BI External Tools ribbon
     - **Drag** the downloaded ***.qdt.json** file into **DAX Generator**.  This will create a file inside DAX generator that can be used in the data model. 
-    - Enter your parameters and test that the DAX template is working correctly
+    - Enter your parameters and test that the DAX template is working correctly. [DAX Generator documentation](https://thebipower.fr/index.php/dax-generator/)
 
 1. Fork the [DAX Templates](https://github.com/PowerBI-tips/DAX-Templates) github repo
 
