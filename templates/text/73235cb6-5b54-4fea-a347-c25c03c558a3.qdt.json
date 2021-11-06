@@ -7,7 +7,7 @@
       "displayName": "tableColumn",
       "defaultValue": "",
       "description": "Select a Date Column from the data model.",
-      "selectionKind": "measure"
+      "selectionKind": "table[Column]"
     }
   ],
   "encoding": [
