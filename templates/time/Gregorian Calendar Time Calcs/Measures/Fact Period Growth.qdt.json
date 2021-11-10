@@ -1,0 +1,59 @@
+{
+    "templateName": "Fact Period Growth",
+    "parameters": [
+        {
+            "parameterKey": "__PMeasureName",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "MeasureName",
+            "defaultValue": "Sales YOY",
+            "description": "Measure Name",
+            "selectionKind": "userInput"
+        },
+        {
+            "parameterKey": "__CurrentPeriod",
+            "displayName": "CurrentPeriod",
+            "selectionKind": "measure",
+            "defaultValue": "Sales Amount"
+        },
+        {
+            "parameterKey": "__PreviousPeriod",
+            "displayName": "PreviousPeriod",
+            "defaultValue": "Sales PY",
+            "selectionKind": "measure"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "currency",
+                "UseParenthesisForNegativeValues": "true",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "__PMeasureName",
+            "expression": "=\nVAR ValueCurrentPeriod = [__CurrentPeriod]\nVAR ValuePreviousPeriod = [__PreviousPeriod]\nVAR Result =\n    IF (\n        NOT ISBLANK ( ValueCurrentPeriod ) && NOT ISBLANK ( ValuePreviousPeriod ),\n        ValueCurrentPeriod - ValuePreviousPeriod\n    )\nRETURN\n    Result",
+            "description": "",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "time"
+    ],
+    "authors": [
+        "SQL BI Alberto Ferrari and Marco Russo",
+        "Translated to template - Kevin Arnold"
+    ],
+    "instructions": [
+        null
+    ],
+    "supportURLs": [
+        "https://www.daxpatterns.com/standard-time-related-calculations/#code17"
+    ],
+    "description": "Used to create period growth measures, i.e. YOY, QOQ, MOM",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "7edfff31-e28d-4336-ad6a-ea009b9a5be0",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}

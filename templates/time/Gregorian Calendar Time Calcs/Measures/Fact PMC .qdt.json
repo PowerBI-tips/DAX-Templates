@@ -1,0 +1,62 @@
+{
+    "templateName": "Fact PMC ",
+    "parameters": [
+        {
+            "parameterKey": "__BaseMeasure",
+            "dataType": [],
+            "displayName": "BaseMeasure",
+            "defaultValue": "",
+            "description": "The measure to base the calculation",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__ShowValueforDates",
+            "displayName": "ShowValueforDates",
+            "description": "The measure use to determine that there are facts for the date(s)",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__DateColumn",
+            "displayName": "DateColumn",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__MonthColumn",
+            "displayName": "MonthColumn",
+            "description": "The column in the date table representing Year Month",
+            "selectionKind": "table[Column]"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "currency",
+                "UseParenthesisForNegativeValues": "true",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "Fact PYC",
+            "expression": "= IF (\n    [__ShowValueforDates] && HASONEVALUE (__MonthColumn ),\n    CALCULATE (\n        [__BaseMeasure],\n        PARALLELPERIOD ( __DateColumn, -1, MONTH)\n    )\n)",
+            "description": "",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "time"
+    ],
+    "authors": [
+        "SQL BI Alberto Ferrari and Marco Russo",
+        "Translated to template - Kevin Arnold"
+    ],
+    "instructions": [
+        "Enter the parameter values for the base measure, ShowValueforDate measure, date column and Year Month Column in the date table. There are templates available to help create those in your model."
+    ],
+    "supportURLs": [
+        "https://www.daxpatterns.com/standard-time-related-calculations/#code50"
+    ],
+    "description": "Period Month Complete",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "b919f95a-52b6-4034-ac4f-622e1970819e",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}

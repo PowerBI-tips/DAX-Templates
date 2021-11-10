@@ -1,0 +1,74 @@
+{
+    "templateName": "Fact MTD",
+    "parameters": [
+        {
+            "parameterKey": "__PShowValueForDates",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "ShowValueForDates",
+            "defaultValue": "ShowValueForDates",
+            "description": "The measure returning TRUE/FALSE when values exists for the date. ",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__PReturnMeasure",
+            "dataType": [
+                "number"
+            ],
+            "selectionKind": "measure",
+            "displayName": "ReturnMeasure",
+            "defaultValue": "[Sales Amount]",
+            "description": "The measure calculated in this measure"
+        },
+        {
+            "parameterKey": "__PDateColumn",
+            "displayName": "DateColumn",
+            "defaultValue": "'Date'[Date]",
+            "description": "The Date column",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__PMeasureName",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "MeasureName",
+            "defaultValue": "Sales MTD",
+            "description": "Measure Name",
+            "selectionKind": "userInput"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "currency",
+                "UseParenthesisForNegativeValues": "true",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "__PMeasureName",
+            "expression": "=\nIF (\n    [__PShowValueForDates],\n    CALCULATE (\n        [__PReturnMeasure],\n        DATESMTD ( __PDateColumn  )\n    )\n)",
+            "description": "The MTD total up the the last date with Sales",
+            "folder": "",
+            "hidden": "true"
+        }
+    ],
+    "tags": [
+        "time"
+    ],
+    "authors": [
+        "SQL BI Alberto Ferrari and Marco Russo",
+        "Translated to template - Kevin Arnold"
+    ],
+    "instructions": [
+        null
+    ],
+    "supportURLs": [
+        "https://www.daxpatterns.com/standard-time-related-calculations/#code14"
+    ],
+    "description": "returning the Month to Date result only when the ShowValueForDates measure returns TRUE",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "c1c0f10e-414d-412d-8638-0ba0a1e04a76",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}

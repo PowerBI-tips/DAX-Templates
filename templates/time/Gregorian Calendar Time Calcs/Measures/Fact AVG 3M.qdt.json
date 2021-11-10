@@ -1,0 +1,62 @@
+{
+    "templateName": "Fact AVG 3M",
+    "parameters": [
+        {
+            "parameterKey": "__BaseMeasure",
+            "dataType": [],
+            "displayName": "BaseMeasure",
+            "defaultValue": "",
+            "description": "The measure to base the calculation",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__DatesWithFact",
+            "displayName": "DatesWithFact",
+            "description": "The column in the date table indicting the fact is present for that day",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__DateColumn",
+            "displayName": "DateColumn",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__FactDate",
+            "displayName": "FactDate",
+            "description": "Date on the fact table",
+            "selectionKind": "table[Column]"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "currency",
+                "UseParenthesisForNegativeValues": "true",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "Fact MAT",
+            "expression": "= VAR Period3M =\n    CALCULATETABLE (\n        DATESINPERIOD (\n            __DateColumn,\n            MAX ( __DateColumn ),\n            -3,\n            MONTH\n        ),\n         __DatesWithFact = TRUE\n    )\nVAR FirstDayWithData =\n    CALCULATE (\n        MIN ( __FactDate ),\n        REMOVEFILTERS ()\n    )\nVAR FirstDayInPeriod =\n    MINX ( Period3M, __DateColumn )\nVAR Result =\n    IF (\n        FirstDayWithData <= FirstDayInPeriod,\n        AVERAGEX (\n            Period3M,\n            __BaseMeasure\n        )\n    )\nRETURN\n    Result",
+            "description": "moving average over 3 months",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "time"
+    ],
+    "authors": [
+        "SQL BI Alberto Ferrari and Marco Russo",
+        "Translated to template - Kevin Arnold"
+    ],
+    "instructions": [
+        "Enter the parameter values for the base measure, Dates With Fact, date columns in the date table and the Fact Date from the Fact Table. There are templates available to help create those in your model."
+    ],
+    "supportURLs": [
+        "https://www.daxpatterns.com/standard-time-related-calculations/#code61"
+    ],
+    "description": "moving average over three months",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "3adacfc4-3475-438c-8560-97b758b2c96b",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
