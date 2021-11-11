@@ -1,0 +1,83 @@
+{
+    "templateName": "Fact PM",
+    "parameters": [
+        {
+            "parameterKey": "__PShowValueForDates",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "ShowValueForDates",
+            "defaultValue": "ShowValueForDates",
+            "description": "The measure returning TRUE/FALSE when values exists for the date. ",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__PReturnMeasure",
+            "dataType": [
+                "number"
+            ],
+            "selectionKind": "measure",
+            "displayName": "ReturnMeasure",
+            "defaultValue": "Sales Amount",
+            "description": "The measure calculated in this measure"
+        },
+        {
+            "parameterKey": "__PDateColumn",
+            "displayName": "DateColumn",
+            "defaultValue": "'Date'[Date]",
+            "description": "The Date column",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__PMeasureName",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "MeasureName",
+            "defaultValue": "Sales PM",
+            "description": "Measure Name",
+            "selectionKind": "userInput"
+        },
+        {
+            "parameterKey": "__DateWithSales",
+            "dataType": [
+                "true / false"
+            ],
+            "displayName": "DateWithSales",
+            "defaultValue": "'Date'[DateWithSales]",
+            "selectionKind": "table[Column]"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "currency",
+                "UseParenthesisForNegativeValues": "true",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "__PMeasureName",
+            "expression": "=\nIF (\n    [__PShowValueForDates],\n    CALCULATE (\n        [__PReturnMeasure],\n        CALCULATETABLE (\n            DATEADD ( __PDateColumn, -1, MONTH),\n            __DateWithSales = TRUE\n        )\n    )\n)",
+            "description": "Sales PM to guarantee a fair comparison of the last period with data",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "time"
+    ],
+    "authors": [
+        "SQL BI Alberto Ferrari and Marco Russo",
+        "Translated to template - Kevin Arnold"
+    ],
+    "instructions": [
+        null
+    ],
+    "supportURLs": [
+        "https://www.daxpatterns.com/standard-time-related-calculations/#code23"
+    ],
+    "description": "uses DATEADD and filters Date[DateWithSales] to guarantee a fair comparison of the last period with data.",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "e7268521-e3b7-4f97-bd7f-f41e45247532",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}

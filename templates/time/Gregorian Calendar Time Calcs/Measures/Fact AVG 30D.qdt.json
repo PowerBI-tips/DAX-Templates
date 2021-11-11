@@ -1,0 +1,62 @@
+{
+    "templateName": "Fact AVG 30D",
+    "parameters": [
+        {
+            "parameterKey": "__BaseMeasure",
+            "dataType": [],
+            "displayName": "BaseMeasure",
+            "defaultValue": "",
+            "description": "The measure to base the calculation",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__DatesWithFact",
+            "displayName": "DatesWithFact",
+            "description": "The column in the date table indicting the fact is present for that day",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__DateColumn",
+            "displayName": "DateColumn",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__FactDate",
+            "displayName": "FactDate",
+            "description": "Date on the fact table",
+            "selectionKind": "table[Column]"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "currency",
+                "UseParenthesisForNegativeValues": "true",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "Fact MAT",
+            "expression": "= VAR Period30D =\n    CALCULATETABLE (\n        DATESINPERIOD (\n            __DateColumn,\n            MAX ( __DateColumn ),\n            -30,\n            DAY\n        ),\n         __DatesWithFact = TRUE\n    )\nVAR FirstDayWithData =\n    CALCULATE (\n        MIN ( __FactDate ),\n        REMOVEFILTERS ()\n    )\nVAR FirstDayInPeriod =\n    MINX ( Period30D, __DateColumn )\nVAR Result =\n    IF (\n        FirstDayWithData <= FirstDayInPeriod,\n        AVERAGEX (\n            Period30D,\n            __BaseMeasure\n        )\n    )\nRETURN\n    Result",
+            "description": "moving average over 30 days",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "time"
+    ],
+    "authors": [
+        "SQL BI Alberto Ferrari and Marco Russo",
+        "Translated to template - Kevin Arnold"
+    ],
+    "instructions": [
+        "Enter the parameter values for the base measure, Dates With Fact, date columns in the date table and the Fact Date from the Fact Table. There are templates available to help create those in your model."
+    ],
+    "supportURLs": [
+        "https://www.daxpatterns.com/standard-time-related-calculations/#code59"
+    ],
+    "description": "moving average over 30 days",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "fcb57316-da32-49d1-8bba-9f5830e1a5c4",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}

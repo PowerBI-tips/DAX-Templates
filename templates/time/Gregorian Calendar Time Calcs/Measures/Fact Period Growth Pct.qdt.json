@@ -1,0 +1,59 @@
+{
+    "templateName": "Fact Period Growth Pct",
+    "parameters": [
+        {
+            "parameterKey": "__PMeasureName",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "MeasureName",
+            "defaultValue": "Sales YOY",
+            "description": "Measure Name",
+            "selectionKind": "userInput"
+        },
+        {
+            "parameterKey": "__PeriodGrowth",
+            "displayName": "PeriodGrowth",
+            "selectionKind": "measure",
+            "defaultValue": "[Sales YOY]"
+        },
+        {
+            "parameterKey": "__PriorPeriod",
+            "displayName": "PriorPeriod",
+            "defaultValue": "[Sales PY]",
+            "selectionKind": "measure"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "percentage",
+                "UseParenthesisForNegativeValues": "true",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "__PMeasureName",
+            "expression": "=\nDIVIDE (\n    [__PeriodGrowth],\n    [__PriorPeriod]\n)",
+            "description": "",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "time"
+    ],
+    "authors": [
+        "SQL BI Alberto Ferrari and Marco Russo",
+        "Translated to template - Kevin Arnold"
+    ],
+    "instructions": [
+        null
+    ],
+    "supportURLs": [
+        "https://www.daxpatterns.com/standard-time-related-calculations/#code18"
+    ],
+    "description": "Used to create period growth measures, i.e. YOY %, QOQ %, MOM %",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "15b307e6-2979-4e6b-97f2-9b63811a6c51",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}

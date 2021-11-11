@@ -1,0 +1,83 @@
+{
+    "templateName": "Fact Fiscal YTD",
+    "parameters": [
+        {
+            "parameterKey": "__PShowValueForDates",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "ShowValueForDates",
+            "defaultValue": "ShowValueForDates",
+            "description": "The measure returning TRUE/FALSE when values exists for the date. ",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__PReturnMeasure",
+            "dataType": [
+                "number"
+            ],
+            "selectionKind": "measure",
+            "displayName": "ReturnMeasure",
+            "defaultValue": "[Sales Amount]",
+            "description": "The measure calculated in this measure"
+        },
+        {
+            "parameterKey": "__PDateColumn",
+            "displayName": "DateColumn",
+            "defaultValue": "'Date'[Date]",
+            "description": "The Date column",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__PMeasureName",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "MeasureName",
+            "defaultValue": "Sales Fiscal YTD",
+            "description": "Measure Name",
+            "selectionKind": "userInput"
+        },
+        {
+            "parameterKey": "__FiscalMonthDay",
+            "dataType": [
+                "string"
+            ],
+            "displayName": "FiscalMonthDay",
+            "description": "the last day of the fiscal year as the month number and day. Example 6-30",
+            "selectionKind": "userInput"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "currency",
+                "UseParenthesisForNegativeValues": "true",
+                "UseThousandSeparator": "true"
+            },
+            "objectType": "measure",
+            "name": "__PMeasureName",
+            "expression": "=\nIF (\n    [__PShowValueForDates],\n    CALCULATE (\n        [__PReturnMeasure],\n        DATESYTD ( __PDateColumn, \"__FiscalMonthDay\"  )\n    )\n)",
+            "description": "The Fiscal YTD total up the the last date with Sales",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [
+        "time"
+    ],
+    "authors": [
+        "SQL BI Alberto Ferrari and Marco Russo",
+        "Translated to template - Kevin Arnold"
+    ],
+    "instructions": [
+        null
+    ],
+    "supportURLs": [
+        "https://www.daxpatterns.com/standard-time-related-calculations/#code9"
+    ],
+    "description": "returning a Fiscal YTD result only when the ShowValueForDates measure returns TRUE",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "1e5973d5-2c58-4fdc-8cf5-297ef6794e65",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
