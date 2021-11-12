@@ -1,5 +1,5 @@
 {
-    "templateName": "Sum",
+    "templateName": "Average with Force blank to 0 value",
     "parameters": [
         {
             "parameterKey": "__FactTable",
@@ -29,9 +29,9 @@
                 "UseThousandSeparator": "true"
             },
             "objectType": "measure",
-            "name": "Sum of = ",
-            "expression": "SUMX ( '__FactTable', __FactColumn )",
-            "description": "Aggregates a fact or measure in a fact table via Sum",
+            "name": "Average of __FactColumn",
+            "expression": " = \nVAR _testCase = AVERAGEX ( '__FactTable', __FactColumn)\nRETURN IF( ISBLANK( _testCase ), 0, _testCase )",
+            "description": "Aggregates a fact or measure in a fact table via Average; may need to specify additional filters over table",
             "folder": "",
             "hidden": "false"
         }
@@ -40,13 +40,13 @@
         "totals"
     ],
     "authors": [
-        "Joel Sherman"
+        "Mike Carlo"
     ],
     "instructions": [
-        "Specify the fact table and column for which the sum aggregation should occur.  \n\nNote:  Run the generator for this template for ALL facts/measures that you want to have a base measure for before running other more complex measures that would call base measures like this."
+        "Specify the fact table and column for which the average aggregation should occur.  \n\nNote:  Run the generator for this template for ALL facts/measures that you want to have a base measure for before running other more complex measures that would call base measures like this."
     ],
     "supportURLs": [],
-    "description": "A simple sum aggregation of a fact",
+    "description": "A simple average aggregation of a fact",
     "buildVersion": "v1.0.0",
     "uniqueId": "20e36986-9fdd-4277-bd32-869ac6ceaa3d",
     "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"

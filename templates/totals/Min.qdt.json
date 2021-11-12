@@ -17,7 +17,7 @@
                 "string"
             ],
             "displayName": "FactColumn",
-            "description": "The column in the fact table that you'd like the iteration engine to agggregate",
+            "description": "The column in the fact table that you'd like the iteration engine to aggregate",
             "selectionKind": "table[Column]"
         }
     ],
@@ -29,8 +29,8 @@
                 "UseThousandSeparator": "true"
             },
             "objectType": "measure",
-            "name": "Min of = ",
-            "expression": "MINX ( __FactTable, __FactColumn)",
+            "name": "Min of",
+            "expression": "= MINX ( '__FactTable', __FactColumn )",
             "description": "Aggregates a fact or measure in a fact table via Min",
             "folder": "",
             "hidden": "false"

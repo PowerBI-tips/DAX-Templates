@@ -17,7 +17,7 @@
                 "string"
             ],
             "displayName": "FactColumn",
-            "description": "The column in the fact table that you'd like the iteration engine to agggregate",
+            "description": "The column in the fact table that you'd like the iteration engine to aggregate",
             "selectionKind": "table[Column]"
         }
     ],
@@ -29,8 +29,8 @@
                 "UseThousandSeparator": "true"
             },
             "objectType": "measure",
-            "name": "Count of = ",
-            "expression": "COUNTX ( __FactTable, __FactColumn)",
+            "name": "Count of",
+            "expression": "= COUNTX ( '__FactTable', __FactColumn )",
             "description": "Aggregates a fact or measure in a fact table via Count; may need to specify additional filters over table",
             "folder": "",
             "hidden": "false"
