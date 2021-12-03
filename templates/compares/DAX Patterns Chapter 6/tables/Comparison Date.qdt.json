@@ -1,0 +1,43 @@
+{
+    "templateName": "Comparison Date",
+    "parameters": [
+        {
+            "parameterKey": "__DateTable",
+            "dataType": [],
+            "displayName": "DateTable",
+            "defaultValue": "",
+            "description": "Select the data table in the model ",
+            "selectionKind": "table"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "",
+                "UseParenthesisForNegativeValues": "",
+                "UseThousandSeparator": ""
+            },
+            "objectType": "table",
+            "name": "Comparison Date",
+            "expression": "= __DateTable",
+            "description": "",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [],
+    "authors": [
+        "SQL BI Alberto Ferrari and Marco Russo",
+        "Translated to template - Kevin Arnold"
+    ],
+    "instructions": [
+        "Add the additional table based on the current date table, Rename the Date column, Add the inactive relationship"
+    ],
+    "supportURLs": [
+        "https://www.daxpatterns.com/comparing-different-time-periods/"
+    ],
+    "description": "Creates the Comparison Date table based on the existing Date table. You will need to rename your date column and add an inactive relationship between this table and the Date table. See the support documentation for help. ",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "0c548962-2c3e-469a-bc53-42b5875562a9",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
