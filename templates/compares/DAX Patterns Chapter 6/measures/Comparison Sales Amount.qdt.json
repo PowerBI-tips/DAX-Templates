@@ -1,0 +1,62 @@
+{
+    "templateName": "Comparison Sales Amount",
+    "parameters": [
+        {
+            "parameterKey": "__MeasuretoCompare",
+            "dataType": [],
+            "displayName": "Measure to Compare",
+            "defaultValue": "",
+            "description": "The measure that will be used for comparing",
+            "selectionKind": "measure"
+        },
+        {
+            "parameterKey": "__DateTable",
+            "displayName": "Date Table",
+            "description": "Date table from the model ",
+            "selectionKind": "table"
+        },
+        {
+            "parameterKey": "__DateColumn",
+            "displayName": "Date Column",
+            "description": "The Date column from the Date table",
+            "selectionKind": "table[Column]"
+        },
+        {
+            "parameterKey": "__CamparisonDateColumn",
+            "displayName": "Comparison Date Column",
+            "description": "The date column from the comparison date table",
+            "selectionKind": "table[Column]"
+        }
+    ],
+    "encoding": [
+        {
+            "format": {
+                "formatString": "",
+                "UseParenthesisForNegativeValues": "",
+                "UseThousandSeparator": ""
+            },
+            "objectType": "measure",
+            "name": "Comparison Sales Amount",
+            "expression": "=\nVAR ComparisonPeriod =\n    CALCULATETABLE (\n        VALUES ( __DateColumn ),\n        REMOVEFILTERS ( '__DateTable' ),\n        USERELATIONSHIP ( __DateColumn, __CamparisonDateColumn )\n    )\nVAR Result =\n    CALCULATE (\n        [__MeasuretoCompare],\n        ComparisonPeriod\n    )\nRETURN\n    Result",
+            "description": "",
+            "folder": "",
+            "hidden": "false"
+        }
+    ],
+    "tags": [],
+    "authors": [
+        "SQL BI Alberto Ferrari and Marco Russo",
+        "Translated to template - Kevin Arnold"
+    ],
+    "instructions": [
+        "After adding the comparison date table, use this template to create the comparison measure based on a measure in the model. Set the parameters and then generate. "
+    ],
+    "supportURLs": [
+        "https://www.daxpatterns.com/comparing-different-time-periods/#code1",
+        null
+    ],
+    "description": "Compare the value of a measure in different time periods without adjusting",
+    "buildVersion": "v1.0.0",
+    "uniqueId": "b1406a9f-29a8-41ed-8f81-f81d888487eb",
+    "schemaVersion": "https://github.com/PowerBI-tips/DAX-Templates/blob/main/schema/v1.ts"
+}
