@@ -80,6 +80,7 @@
                 "UseThousandSeparator": "true"
             },
             "name": "count of __columnName",
+            "objectType": "measure",
             "expression": "= COUNT ( '__tableName'[__columnName] )",
             "description": "counts the number of rows in the __columnName column found in the __tableName table",
             "folder": "_Simple Aggregations",
