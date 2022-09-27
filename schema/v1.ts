@@ -1,6 +1,12 @@
-export const schema = {
+export const schema: JSONSchema7 = {
   type: 'object',
-  required: ['templateName', 'authors', 'description', 'encoding', 'instructions'],
+  required: [
+    'templateName',
+    'authors',
+    'description',
+    'encoding',
+    'instructions',
+  ],
   properties: {
     templateName: {
       type: 'string',
@@ -17,7 +23,7 @@ export const schema = {
         'Enter a parameter that will be used within the DAX template',
       type: 'array',
       minItems: 1,
-      required:['parameterKey','displayName','dataType','selectionKind'],
+      required: ['parameterKey', 'displayName', 'dataType', 'selectionKind'],
       items: {
         type: 'object',
         properties: {
@@ -25,6 +31,7 @@ export const schema = {
             type: 'string',
             title: 'Unique Identifier for Parameter *',
             default: '__Parameter1',
+            // pattern: '/^\S*$/',
           },
           displayName: {
             type: 'string',
@@ -77,8 +84,16 @@ export const schema = {
                 const: 'userInput',
               },
               {
+                title: 'True / False',
+                const: 'trueFalse',
+              },
+              {
                 title: 'User Input or From Data Model',
                 const: 'userInputModel',
+              },
+              {
+                title: 'hex color code',
+                const: 'colorHEX',
               },
             ],
           },
@@ -90,7 +105,7 @@ export const schema = {
       minItems: 1,
       items: {
         type: 'object',
-        required:['objectType','name','expression'],
+        required: ['objectType', 'name', 'expression'],
         properties: {
           objectType: {
             type: 'string',
@@ -130,17 +145,17 @@ export const schema = {
           hidden: {
             type: 'string',
             title: 'Hide the Measure by Default',
-                
-                oneOf: [
-                  {
-                    title: 'Yes',
-                    const: 'true',
-                  },
-                  {
-                    title: 'No',
-                    const: 'false',
-                  },
-                ],
+
+            oneOf: [
+              {
+                title: 'Yes',
+                const: 'true',
+              },
+              {
+                title: 'No',
+                const: 'false',
+              },
+            ],
           },
           format: {
             type: 'object',
@@ -174,6 +189,10 @@ export const schema = {
                     title: 'Scientific',
                     const: 'scientific',
                   },
+                  {
+                    title: 'Text',
+                    const: 'text',
+                  }
                 ],
               },
               UseParenthesisForNegativeValues: {
@@ -209,6 +228,23 @@ export const schema = {
         },
       },
     },
+    tags: {
+      type: 'array',
+      title: 'Tags *',
+      minItems: 1,
+      uniqueItems: true,
+      items: {
+        type: 'string',
+        enum: [
+          'agg. per category',
+          'filters',
+          'time',
+          'totals',
+          'math ops.',
+          'text',
+        ],
+      },
+    },
     authors: {
       type: 'array',
       title: 'Authors *',
@@ -217,24 +253,17 @@ export const schema = {
         type: 'string',
       },
     },
-    supportURLs: {
-      type: 'array',
-      title: 'Support URLs',
-      items: {
-        type: 'string',
-      },
-    },
-    tags: {
-      type: 'array',
-      title: 'Tags',
-      items: {
-        type: 'string',
-      },
-    },
     instructions: {
       type: 'array',
       title: 'Instructions *',
       minItems: 1,
+      items: {
+        type: 'string',
+      },
+    },
+    supportURLs: {
+      type: 'array',
+      title: 'Support URLs',
       items: {
         type: 'string',
       },
